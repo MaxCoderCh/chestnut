@@ -92,7 +92,7 @@ $(function () {
         window.location = '/chestnut/doctorDetails/DoctorDetails.html?' + $(this).attr("name");
     })
     $(".addFoucsBtn").click(function () {
-        widnow.location = '/chestnut/doctorSearch/DoctorSearch.html'
+        window.location = '/chestnut/doctorSearch/DoctorSearch.html'
     })
 
 
