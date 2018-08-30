@@ -1,0 +1,70 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+.content {
+    h2 {
+        .margin(42,0,12,20);
+        border-left: 2px solid @titleColor;
+        color: @titleColor;
+        .font-size(40);
+        .padding(0,0,0,15)    ;
+    }
+    h3 {
+        display: flex;
+        align-items: center;
+        .height(86);
+        color: #999999;
+        .month {
+            .margin(0,20,0,20);
+            color: @titleColor;
+            .font-size(40);
+        }
+        .countBox {
+            .margin-left(15);
+            color: @titleColor;
+            .font-size(26);
+            .count {
+                .padding(0,5,0,5);
+            }
+        }
+    }
+
+    .unscrambleItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .box-shadow();
+        .border-radius();
+        .padding(16,30,16,30);
+        .margin(10,0,10,0);
+        .content {
+            .width(444);
+            .date {
+                .font-size(34);
+                color: @titleColor;
+                .line-height(46);
+            }
+            .time {
+                .font-size(24);
+                color: #999999;
+                .line-height(32);
+                letter-spacing: 3px;
+            }
+            .text {
+                .margin-top(11);
+                .font-size(26);
+                color: #666666;
+                .line-height(36);
+            }
+        }
+        .btnBox {
+            .font-size(32);
+            letter-spacing: 1px;
+            .padding(0,20,0,20);
+            color: @subtitleColor;
+        }
+    }
+}

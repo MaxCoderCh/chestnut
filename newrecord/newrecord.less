@@ -1,0 +1,233 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+body {
+    background: @bgColor;
+    .padding(0,15,58,15);
+}
+
+// 切换按钮部分
+
+.tabBox {
+    display: flex;
+    margin: 0 auto;
+    .margin-top(27);
+    .margin-bottom(27);
+    .width(605);
+    .height(96);
+    border: 1px solid @titleColor;
+    .border-radius();
+    overflow: hidden;
+
+    > a {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        .font-size(34);
+        color: @titleColor;
+        background: @fff;
+        letter-spacing: 2px;
+
+        &.active {
+            color: @fff;
+            background: @titleColor;
+        }
+    }
+}
+// 主要内容部分
+
+.contentBox {
+    > div {
+        display: none;
+    }
+    .basicContent {
+        background: @fff;
+        .border-radius();
+        .padding(0,27,30,27);
+        // 基本信息的模块
+        .basicInfoItem {
+            display: flex;
+            align-items: center;
+            .height(86);
+            border-bottom: 1px solid #cccccc;
+
+            > p {
+                position: relative;
+                .width(160);
+                display: inline-block;
+                text-align: justify;
+                text-align-last: justify;
+                .padding(0,26,0,0);
+                .font-size(32);
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    transform: translate(0, -50%);
+                    top: 55%;
+                    right: 0;
+                    .width(2);
+                    .height(24);
+                    background: #999;
+                }
+            }
+
+            > input {
+                flex: 1;
+                .padding(0,0,0,32);
+                .font-size(32);
+                color: @textColor;
+                letter-spacing: 1px;
+                .line-height(82);
+                &.error {
+                    color: red;
+                }
+            }
+
+            .sexBox {
+                display: flex;
+                .width(440);
+                .height(60);
+                border: 1px solid @subtitleColor;
+                .margin(0,0,0,32);
+                .border-radius();
+                overflow: hidden;
+                > a {
+                    display: flex;
+                    flex: 1;
+                    justify-content: center;
+                    align-items: center;
+                    background: @fff;
+                    color: @subtitleColor;
+                    .font-size(32);
+
+                    &.active {
+                        color: @fff;
+                        background: @subtitleColor;
+                    }
+                }
+            }
+        }
+    }
+
+    .medicalContent {
+        // 病史的模块
+        .medicalItem {
+            .margin(26,0,0,0);
+            .border-radius();
+            .box-shadow();
+            background: @fff;
+            border: 1px solid transparent;
+
+            .searchBox {
+                display: flex;
+                align-items: center;
+                .box-shadow();
+                .height(128);
+
+                > p {
+                    .width(280);
+                    .text-indent(36);
+                    .font-size(32);
+                    color: @textColor;
+                }
+                .inputBox {
+                    position: relative;
+                    .width(364);
+                    .height(62);
+                    &:before {
+                        content: ' ';
+                        position: absolute;
+                        z-index: 99;
+                        top: 50%;
+                        .right(34);
+                        transform: translate(0, -50%);
+                        .width(30);
+                        .height(30);
+                        background: url("../images/search_false.png") no-repeat center;
+                        .background-size(30,30);
+                    }
+                    > input {
+                        flex: 1;
+                        .width(364);
+                        .height(62);
+                        border: 1px solid #cccccc;
+                        .border-radius();
+                        .padding(0,64,0,20);
+                        .margin(0,74,0,0,);
+                        .font-size(30);
+                    }
+                    .selectUl {
+                        display: none;
+                        position: absolute;
+                        .top(62);
+                        left: 0;
+                        z-index: 100;
+                        .width(364);
+                        border: 1px solid #666;
+                        .padding(20,20,20,20);
+                        .border-radius();
+                        background: @fff;
+                        .selectItem {
+                            .line-height(60);
+                            .font-size(28);
+                            background: @fff;
+                        }
+                    }
+                }
+
+
+            }
+
+            .illnessBox {
+                display: none;
+                flex-wrap: wrap;
+                .padding(10,0,24,36);
+                > li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    letter-spacing: 1px;
+                    background: @subtitleColor;
+                    color: @fff;
+                    .height(58);
+                    .padding(0,30,0,30);
+                    .font-size(30);
+                    .border-radius();
+                    .margin(20,20,0,0);
+                }
+            }
+        }
+        .medicalItem.active {
+            border: 1px solid #999999;
+            .searchBox {
+                .inputBox {
+                    &:before {
+                        background-image: url('../images/search_true.png');
+                    }
+                    > input {
+                        border: 1px solid @subtitleColor;
+                    }
+                }
+            }
+        }
+    }
+
+    .active {
+        display: block;
+    }
+}
+// 完成按钮
+.submitBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .width(478);
+    .height(74);
+    background: @fff;
+    border: 1px solid @titleColor;
+    .border-radius();
+    margin: 0 auto;
+    .margin-top(37);
+    .font-size(34);
+    color: #000;
+}

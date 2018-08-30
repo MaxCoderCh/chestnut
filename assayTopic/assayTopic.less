@@ -1,0 +1,202 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+}
+// title 部分
+.titleBox {
+    display: flex;
+    .height(100);
+    align-items: center;
+    border-bottom: 1px solid #666666;
+    background: @fff;
+
+    > p {
+        text-align: center;
+        .line-height(100);
+        .font-size(34);
+        color: @textColor;
+    }
+
+    .titleLeft {
+        .width(250);
+    }
+
+    .titleRight {
+        flex: 1;
+        border-left: 1px solid #757575;
+    }
+}
+// 疾病切换 和 内容
+
+.assayContent {
+    display: flex;
+
+    .illnessTab {
+        position: relative;
+        z-index: 10;
+        .width(250);
+
+        > a {
+            display: flex;
+            .height(120);
+            align-items: center;
+            background: #e6e6e6;
+            border: 1px solid #b7b7b7;
+            border-top: none;
+            .font-size(32);
+            .padding(0,0,0,33);
+
+            &.active {
+                position: relative;
+                background: @fff;
+                border-right-color: @fff;
+                .font-size(34);
+                color: @titleColor;
+                .width(253);
+
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    top: 50%;
+                    .left(12);
+                    .width(4);
+                    .height(37);
+                    background: @titleColor;
+                    transform: translate(0, -50%);
+                }
+            }
+
+
+            &.flag {
+                background: @fff;
+                border-color: transparent;
+            }
+        }
+    }
+
+    .illnessContent {
+        position: relative;
+        z-index: 9;
+        left: 0;
+        .width(500);
+        .height(840);
+        overflow-y: auto;
+        border: 1px solid #757575;
+        border-top: none;
+        background: @fff;
+        .illnessBox {
+            border: none;
+            > h2 {
+                .height(84);
+                .line-height(84);
+                color: @subtitleColor;
+                .font-size(32);
+                .padding(0,0,0,27);
+            }
+
+            .timeBox {
+                display: flex;
+                .margin(0,78,0,42);
+                align-items: center;
+                border-bottom: 1px solid #cccccc;
+                .height(66);
+                .padding(0,0,20,0);
+
+                > p {
+                    .font-size(30);
+                    color: @textColor;
+                }
+                .dateSelect {
+                    border: none;
+                    border-bottom: 1px solid #d1d1d1;
+                }
+                > input {
+                    .width(230);
+                    .font-size(28);
+                    .line-height(44);
+                    text-align: center;
+                    color: #666666;
+                    border-radius: none;
+                    border-bottom: 1px solid #d1d1d1;
+                }
+            }
+
+            .answerItem {
+                .margin(6,0,0,48);
+
+                > h3 {
+                    .line-height(56);
+                    .font-size(30);
+                    color: @textColor;
+                }
+
+                > a {
+                    display: flex;
+                    .line-height(52);
+                    .font-size(28);
+                    .padding(0,0,0,44);
+                    color: #666666;
+                    background: url("../images/radio_false.png") no-repeat left center;
+                    .background-size(28,28);
+
+                    &.active {
+                        color: @subtitleColor;
+                        background: url("../images/radio_true.png") no-repeat left center;
+                        .background-size(28,28);
+                    }
+                    > sup {
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+    }
+}
+// 完成按钮
+.submitBtn {
+    margin: 0 auto;
+    .margin-top(48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .width(600);
+    .height(82);
+    .font-size(32);
+    background: @fff;
+    color: #000;
+    border: 1px solid @titleColor;
+}
+.dateContent {
+    display: none;
+}
+
+// 判断年龄
+.ageSelect {
+    display: none;
+    .width(600);
+    .padding(30,30,30,30);
+    .border-radius();
+    background: @fff;
+    > p {
+        text-align: center;
+        .font-size(34);
+        color: @titleColor;
+    }
+    .btnBox {
+        .margin-top(50);
+        display: flex;
+        justify-content: space-between;
+        > a {
+            flex: 1;
+            .line-height(40);
+            .padding(10,0,10,0);
+            text-align: center;
+            border: 1px solid @subtitleColor;
+            color: @titleColor;
+            .margin(0,10,0,10);
+
+        }
+    }
+}

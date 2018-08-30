@@ -1,0 +1,158 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    .padding(0,0,58,0);
+}
+
+.footer {
+    position: fixed;
+}
+
+.infoContent {
+    background: @bgColor;
+    text-align: center;
+    .padding(0,0,65,0);
+
+    > img {
+        .width(200);
+        .height(200);
+        .margin(44,0,40,0);
+    }
+
+    > p {
+        color: @titleColor;
+    }
+
+    .chinaName {
+        .font-size(36);
+        letter-spacing: 1px;
+    }
+
+    .englishName {
+        .font-size(18);
+        letter-spacing: 1px;
+    }
+}
+
+.mainContent {
+    position: relative;
+    .padding(56,30,0,30);
+    background: @fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &:before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%,0);
+        .width(0);
+        .height(0);
+        border: 1.5rem solid @bgColor;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        border-bottom: none;
+    }
+
+    .item {
+
+        .box-shadow();
+        .border-radius();
+        .margin(20,0,0,0);
+        .padding(0,0,0,34);
+        color: @fff;
+
+        > h2 {
+            .font-size(34);
+            .margin(24,0,0,0);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        > p {
+            .font-size(24);
+            .margin(8,0,0,0);
+        }
+
+        > span {
+            display: block;
+            .font-size(18);
+            .margin(20,0,0,0);
+        }
+    }
+
+    .assess {
+        .width(690);
+        .height(190);
+        background: url("../images/assess.png") no-repeat center;
+        .background-size(714, 214);
+    }
+
+    .assay {
+        .width(330);
+        .height(190);
+        background: url("../images/assay.png") no-repeat center;
+        .background-size(354, 214);
+    }
+
+    .recovery {
+        .width(330);
+        .height(190);
+        background: url("../images/recovery.png") no-repeat center;
+        .background-size(354, 214);
+    }
+
+    .noDredge {
+        > h2 {
+            color: @titleColor;
+        }
+
+        > p {
+            color: @textColor;
+        }
+
+        > span {
+            color: @666;
+        }
+    }
+}
+// 底部导航
+
+.bottonNavContent {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .height(100);
+    width: 100%;
+    border-top: 1px solid #cccccc;
+    background: #fff;
+
+    > a {
+        flex: 1;
+        // height: 100%;
+        .height(76);
+        text-align: center;
+        .padding(50,0,0,0);
+        .font-size(22);
+        color: #6f6f6f;
+    }
+
+    .oneItem {
+        background: url("../images/onenav_true.png") no-repeat top center;
+        .background-size(46,46);
+        color: @titleColor;
+    }
+    .twoItem {
+        background: url("../images/twonav_false.png") no-repeat top center;
+        .background-size(46,46);
+    }
+    .threeItem {
+        background: url("../images/threenav_false.png") no-repeat top center;
+        .background-size(46,46);
+    }
+}

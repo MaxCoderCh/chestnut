@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>添加就诊人</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+    />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        // console.log(navigator.userAgent)// 设备信息
+        !(function (doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function () {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/addPeople/AddPeople.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/plugins/layui/layui.all.js" charset="utf-8"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/js/root.js"></script>
+    <script src="/chestnut/js/utils.js"></script>
+    <script src="/chestnut/addPeople/AddPeople.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="baseContent">
+        <p class="title">身份信息</p>
+        <div class="baseBox">
+            <div class="fileBox">
+                <img class="fileImg" src="../images/camera.png" alt="">
+                <p class="fielText">拍照上传</p>
+                <input class="fileBtn" type="file">
+            </div>
+            <div class="baseInfoBox">
+                <p class="baseText">
+                    <span class="doctorName">姓名</span>
+                    <span class="sex">性别</span>
+                    <span class="age">年龄</span>
+                </p>
+                <p class="idNumber">身份证号码</p>
+            </div>
+        </div>
+        <div class="relationBox">
+            <p class="relationTitle">与你的关系</p>
+            <form class="layui-form" action="">
+                <select name="" id="" class="patientSource">
+                    <option value="自己">自己</option>
+                    <option value="父母">父母</option>
+                    <option value="配偶">配偶</option>
+                    <option value="子女">子女</option>
+                    <option value="其他">其他</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <!-- 既往病史 - start -->
+    <div class="medicalContent">
+        <div class="medicalItem">
+            <div class="searchBox">
+                <p>药物过敏史</p>
+                <div class="inputBox">
+                    <input class="illnessSearch drugAllergy" type="text" name="" value="" placeholder="请输入拼音首字母">
+                    <ul class="selectUl drugAllergyAdd">
+                    </ul>
+                </div>
+            </div>
+            <div class="illnessBox drugAllergyUl">
+            </div>
+        </div>
+        <div class="medicalItem">
+            <div class="searchBox">
+                <p>既 往 病 史</p>
+                <div class="inputBox">
+                    <input class="illnessSearch illnessInput" type="text" name="" value="" placeholder="请输入拼音首字母">
+                    <ul class="selectUl illnessAdd">
+                    </ul>
+                </div>
+            </div>
+            <div class="illnessBox illnessUl">
+
+            </div>
+        </div>
+        <div class="medicalItem">
+            <div class="searchBox">
+                <p>手 术 史</p>
+                <div class="inputBox">
+                    <input class="illnessSearch surgeryInput" type="text" name="" value="" placeholder="请输入拼音首字母">
+                    <ul class="selectUl surgeryAdd">
+                    </ul>
+                </div>
+            </div>
+            <div class="illnessBox surgeryUl">
+            </div>
+        </div>
+        <div class="medicalItem">
+            <div class="searchBox">
+                <p>正在服用药物</p>
+                <div class="inputBox">
+                    <input class="illnessSearch eatingDrugInput" type="text" name="" value="" placeholder="请输入拼音首字母">
+                    <ul class="selectUl eatingDrugAdd">
+                    </ul>
+                </div>
+            </div>
+            <div class="illnessBox eatingDrugUl">
+            </div>
+        </div>
+    </div>
+    <!-- 既往病史 - end -->
+
+
+    <a class="submitBtn" href="javascript:;">保存并退出</a>
+</body>
+
+</html>

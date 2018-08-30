@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>医生详情</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+    />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        !(function (doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function () {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/doctorDetails/DoctorDetails.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/plugins/layui/layui.all.js"></script>
+    <script src="/chestnut/js/utils.js" charset="utf-8"></script>
+    <script src="/chestnut/js/root.js" charset="utf-8"></script>
+    <script src="/chestnut/doctorDetails/DoctorDetails.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="infoContent">
+            <img class="hearImg" src="../images/defaultHear.png" alt="">
+            <p class="baseInfo">
+                <span class="doctorName">医生名字</span>
+                <span class="titleName">科室名字</span>
+                <span class="hospitalName">医院名字</span>
+            </p>
+            <a class="focusBtn focusTrue" href="javascript:;">关注</a>
+        </div>
+        <div class="statisticsBox">
+            <div class="statisticsItem">
+                <p class="num patientCount"></p>
+                <p class="explain">帮助患者</p>
+            </div>
+            <div class="statisticsItem">
+                <p class="num hitsCount"></p>
+                <p class="explain">访问量</p>
+            </div>
+            <div class="statisticsItem">
+                <p class="num fansCount">312</p>
+                <p class="explain">关注</p>
+            </div>
+        </div>
+    </div>
+    <div class="consultContent">
+        <div class="consultItem imgBtn">
+            <p class="consultText">图文咨询</p>
+            <img src="../images/imgConsult.png" alt="">
+            <p class="consultPic imgPic">暂未开通</p>
+        </div>
+        <div class="consultItem telBtn">
+            <p class="consultText">电话咨询</p>
+            <img src="../images/telConsult.png" alt="">
+            <p class="consultPic telPic">暂未开通</p>
+        </div>
+        <div class="consultItem videoBtn">
+            <p class="consultText">视频咨询</p>
+            <img src="../images/videoConsult.png" alt="">
+            <p class="consultPic videoPic">暂未开通</p>
+        </div>
+    </div>
+    <div class="foldContent">
+        <p class="title">擅长</p>
+        <p class="value foldText goodAt"></p>
+        <a class="foldBtn" href="javascript:;">查看全部
+            <img src="../images/arrow_bottom_blue.png" alt="">
+        </a>
+    </div>
+    <div class="foldContent">
+        <p class="title">简介</p>
+        <p class="value foldText resume"></p>
+        <a class="foldBtn" href="javascript:;">查看全部
+            <img src="../images/arrow_bottom_blue.png" alt="">
+        </a>
+    </div>
+    <!-- 问诊确认弹框-start -->
+    <div class="inquiryContianer">
+        <div class="inquiryContent">
+            <div class="inquiryTitleBox">图文咨询</div>
+            <div class="inquiryCenterBox">
+                <p class="inquiryPic">30.00/次</p>
+                <p class="inquiryPeople">咨询医师--高玉杰</p>
+                <p class="inquiryDesc">通过文字、图片进行咨询</p>
+                <p class="inquiryProtocol">同意<a class="protocolHref" href="javascript:;">《北京航天总医院在线问诊用户协议》</a></p>
+            </div>
+            <div class="inquiryBtnBox">
+                <a class="inquiryNoBtn" href="javascript:;">取消申请</a>
+                <a class="inquiryYesBtn" href="javascript:;">申请咨询</a>
+            </div>
+        </div>
+    </div>
+    <!-- 问诊确认弹框-end -->
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+@titleColor: #2C6CB5; // 标题颜色
+@subtitleColor: #398bcb; // 小标题颜色
+@textColor: #333333; // 文本颜色
+@bgColor: #f6f6f6; // 背景颜色
+@fff: #ffffff; // 白色
+@666: #666666;
+@fold: 40rem;
+
+.width (@num) {
+    width: @num/@fold;
+}
+
+.max-width (@num) {
+    max-width: @num/@fold;
+}
+
+.min-width (@num) {
+    min-width: @num/@fold;
+}
+
+.height (@num) {
+    height: @num/@fold;
+}
+
+.min-height(@num) {
+    min-height: @num/@fold;
+}
+.max-height(@num) {
+    max-height: @num/@fold;
+}
+.font-size (@num) {
+    font-size: @num/@fold;
+}
+
+.line-height (@num) {
+    line-height: @num/@fold;
+}
+
+.text-indent(@num) {
+    text-indent: @num/@fold;
+}
+
+.background-size(@w, @h) {
+    background-size: @w/@fold @h/@fold;
+}
+
+.padding (@t, @r, @b, @l) {
+    padding: @t/@fold @r/@fold @b/@fold @l/@fold;
+}
+
+.margin (@t, @r, @b, @l) {
+    margin: @t/@fold @r/@fold @b/@fold @l/@fold;
+}
+
+.margin-top(@num: 0) {
+    margin-top: @num/@fold;
+}
+
+.margin-right(@num: 0) {
+    margin-right: @num/@fold;
+}
+
+.margin-left(@num: 0) {
+    margin-left: @num/@fold;
+}
+
+.margin-bottom(@num: 0) {
+    margin-bottom: @num/@fold;
+}
+
+.left(@num) {
+    left: @num/@fold;
+}
+
+.right(@num) {
+    right: @num/@fold;
+}
+
+.bottom(@num) {
+    bottom: @num/@fold;
+}
+
+.top(@num) {
+    top: @num/@fold;
+}
+
+.box-shadow (@x: 0, @y: 0, @size: 12px, @spread: 4px, @color: rgba(51, 51, 51, 0.08)) {
+    -webkit-box-shadow: @x @y @size @spread @color;
+    -ms-box-shadow: @x @y @size @spread @color;
+    -moz-box-shadow: @x @y @size @spread @color;
+    -o-box-shadow: @x @y @size @spread @color;
+    box-shadow: @x @y @size @spread @color;
+}
+
+.border-width(@num) {
+    border-width: @num/@fold;
+}
+
+.border-radius (@t: 15, @r: 15, @b: 15, @l: 15) {
+    -webkit-border-radisu: @t/@fold @r/@fold @b/@fold @l/@fold;
+    -ms-border-radisu: @t/@fold @r/@fold @b/@fold @l/@fold;
+    -moz-border-radisu: @t/@fold @r/@fold @b/@fold @l/@fold;
+    -o-border-radisu: @t/@fold @r/@fold @b/@fold @l/@fold;
+    border-radius: @t/@fold @r/@fold @b/@fold @l/@fold;
+}
+// 渐显向上
+@keyframes moveIn {
+    0% {
+        opacity: 0.5;
+        transform: translateY(100px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+// 旋转
+@keyframes spin90 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+}
+// @name名字   @duration时间    @timing曲线    @delay延迟    @count次数    @direction返现
+// .animation (@name: moveIn, @duration: 3s, @timing: ease, @count: 1, @direction: normal){
+//     -moz-animation: @name @duration @timing @count @direction;
+//     -webkit-animation: @name @duration @timing @count @direction;
+//     -o-animation: @name @duration @timing @count @direction;
+//     -ms-animation: @name @duration @timing @count @direction;
+//     animation: @name @duration @timing @count @direction;
+// }

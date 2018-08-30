@@ -1,0 +1,233 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+// 结果部分
+
+.resultsContent {
+    .margin-top(15);
+    display: flex;
+    align-items: center;
+    .height(178);
+    .padding(0,0,0,38);
+    .box-shadow();
+    .border-radius();
+    background: @fff;
+
+    .scoreBox {
+        position: relative;
+        box-sizing: border-box;
+        .width(130);
+        .height(130);
+        overflow: hidden;
+        .infoBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .width(130);
+            .height(130);
+            > p {
+                text-align: center;
+                .font-size(28);
+                color: @textColor;
+                > span {
+                    .font-size(50);
+                    color: @titleColor;
+                }
+            }
+        }
+        .wrapper {
+            position: absolute;
+            .width(67);
+            .height(130);
+            overflow: hidden;
+            background: #fff;
+            .yuan {
+                box-sizing: border-box;
+                .width(130);
+                .height(130);
+                border-radius: 50%;
+            }
+        }
+        .leftBox {
+            top: 0;
+            left: 0;
+            .yuan {
+                border-top: 0 solid @titleColor;
+                border-right: 0 solid @titleColor;
+                border-bottom: 0 solid #dfdee6;
+                border-left: 0 solid #dfdee6;
+                .border-width(2);
+                transform: rotate(45deg);
+            }
+        }
+        .rightBox {
+            top: 0;
+            right: 0;
+            .yuan {
+                position: absolute;
+                top: 0;
+                .left(-65);
+                border-top: 0 solid @titleColor;
+                border-left: 0 solid @titleColor;
+                border-bottom: 0 solid #dfdee6;
+                border-right: 0 solid #dfdee6;
+                .border-width(2);
+                transform: rotate(135deg);
+            }
+        }
+    }
+
+    .textBox {
+        flex: 1;
+        .padding(0,0,0,25);
+
+        > h3 {
+            color: @textColor;
+            .font-size(34);
+        }
+
+        > p {
+            color: #999999;
+            .font-size(28);
+        }
+    }
+    .detailsBtn {
+        .padding(30,38,30,30);
+        color: @subtitleColor;
+        .font-size(32);
+    }
+}
+// 标准部分
+
+.standardContent {
+    .margin-top(15);
+    .padding(10,18,28,18);
+    .border-radius();
+    .box-shadow();
+    background: @fff;
+
+    > h2 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: @titleColor;
+        .font-size(34);
+        .padding(0,0,0,18);
+        .height(56);
+        letter-spacing: 1px;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            .width(2);
+            .height(30);
+            transform: translate(0, -50%);
+            background: @titleColor;
+        }
+    }
+
+    .standardBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .height(64);
+        .padding(0,18,0,18);
+
+        > span {
+            color: #666666;
+            .font-size(30);
+
+            > i {
+                .margin-left(10);
+                color: @subtitleColor;
+                .font-size(30);
+            }
+        }
+    }
+}
+// 医生告知部分
+
+.informContent {
+    .margin-top(15);
+    .padding(10,18,6,18);
+    .box-shadow();
+    .border-radius();
+    background: @fff;
+
+    > h2 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: @titleColor;
+        .font-size(34);
+        .padding(0,0,0,18);
+        .height(56);
+        letter-spacing: 1px;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            .width(2);
+            .height(30);
+            transform: translate(0, -50%);
+            background: @titleColor;
+        }
+    }
+    // 检查项 模块
+    .checkItem {
+        .margin-top(10);
+        display: flex;
+        align-items: flex-start;
+        .padding(0,35,0,35);
+
+        > h3 {
+            .width(185);
+            .font-size(30);
+            color: @subtitleColor;
+        }
+
+        > p {
+            flex: 1;
+            .font-size(28);
+            color: #666666;
+            .line-height(40);
+        }
+    }
+
+    .remind {
+        display: inline-block;
+        .margin(20,0,0,20);
+        .line-height(64);
+        border-top: 1px solid #858585;
+    }
+}
+
+.btnBox {
+    .margin(55,20,0,20);
+    display: flex;
+    justify-content: space-between;
+
+    > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .font-size(32);
+        color: #666666;
+        .height(82);
+        .width(290);
+        background: #fff;
+        border: 1px solid @subtitleColor;
+    }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>在线问诊</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+    />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        !(function (doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function () {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/doctorSearch/DoctorSearch.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/plugins/layui/layui.all.js"></script>
+    <script src="/chestnut/js/utils.js" charset="utf-8"></script>
+    <script src="/chestnut/js/root.js" charset="utf-8"></script>
+    <script src="/chestnut/js/getToken.js"></script>
+    <script src="/chestnut/doctorSearch/DoctorSearch.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <form name="aaaaaa" method="get" action="https://open.weixin.qq.com/connect/oauth2/authorize">
+        <input type="hidden" name="appid" value="wx879a26e37acadb20">
+        <input type="hidden" name="redirect_uri" value="http://www.yilaiyiwang.com/chestnut/doctorSearch/DoctorSearch.html">
+        <input type="hidden" name="response_type" value="code">
+        <input type="hidden" name="scope" value="snsapi_userinfo">
+        <input type="hidden" name="state" value="STATE#wechat_redirect">
+    </form>
+    <div class="searchContent">
+        <div class="searchBox">
+            <div class="searchItem">
+                <img class="searchImg" src="../images/search_false.png" alt="">
+                <input class="searchInput" placeholder="请输入医生名字" type="text">
+            </div>
+            <a class="searchBtn" href="javascript:;">搜索</a>
+        </div>
+    </div>
+
+    <div class="doctorList">
+        <!-- <div class="doctorItem">
+            <img class="hearImg" src="../images/defaultHear.png" alt="默认头像">
+            <div class="infoBox">
+                <p class="doctorName">李林</p>
+                <p class="titleName">职称名字</p>
+                <p class="hospotalName">医院名字死神镰刀</p>
+            </div>
+            <a class="focusBtn focusYes" href="javascript:;">
+                <img class="focusImg" src="../images/focusYes.png" alt=""> 已关注
+            </a>
+        </div> -->
+
+    </div>
+</body>
+
+</html>

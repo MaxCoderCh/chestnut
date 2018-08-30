@@ -1,0 +1,115 @@
+@import "../css/root.less";
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+
+.payContent {
+    .margin-top(19);
+    .box-shadow();
+    .border-radius();
+    background: #ffffff;
+    .height(144);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .padding(0,31,0,54);
+    .payInfoBox {
+        .nameAndType {
+            .font-size(33);
+            color: #333333;
+        }
+        .hospitalName {
+            .font-size(31);
+            color: #666666;
+        }
+    }
+    .picText {
+        .font-size(40);
+        color: #2C6CB5;
+        > span {
+            .font-size(26);
+            > b {
+                .font-size(40);
+            }
+        }
+    }
+}
+
+// 支付方式 - start
+.payWayTitle {
+    .line-height(80);
+    .font-size(33);
+    color: #333333;
+    .text-indent(30);
+}
+.payWayBox {
+    .box-shadow();
+    .border-radius();
+    background: #ffffff;
+    .height(118);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .payTitle {
+        .margin-left(30);
+        .font-size(32);
+        color: #666666;
+        .weChatPay {
+            .width(60);
+            .height(52);
+            .margin-right(20);
+        }
+    }
+    .payBtn {
+        .margin-right(40);
+        .width(38);
+        .height(38);
+        background: url('../images/weChatPayNo.png') no-repeat center;
+        .background-size(38,38);
+    }
+    .payBtn.active {
+        background: url('../images/weChatPayYes.png') no-repeat center;
+        .background-size(38,38);
+    }
+}
+// 支付方式 - end
+
+
+// 确认支付-start
+.payOperate {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    .height(115);
+    width: 100vw;
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .payOperateText {
+        flex: 1;
+        .margin-left(47);
+        .font-size(28);
+        color: #666666;
+        > span {
+            .font-size(33);
+            color: #2C6CB5;
+            > b {
+                .font-size(41);
+            }
+        }
+    }
+    .payAffirmBtn {
+        display: flex;
+        .width(363);
+        .height(115);
+        background: #2C6CB5;
+        align-items: center;
+        justify-content: center;
+        .font-size(35);
+        color: #FFFFFF;
+    }
+}
+// 确认支付-end

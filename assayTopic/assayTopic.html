@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>解读化验单答题</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        // console.log(navigator.userAgent)// 设备信息
+        !(function(doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function() {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/assayTopic/assayTopic.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/plugins/layui/layui.all.js"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/js/root.js"></script>
+    <script src="/chestnut/js/utils.js"></script>
+    <script src="/chestnut/assayTopic/assayTopic.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="titleBox">
+        <p class="titleLeft">化验单名称</p>
+        <p class="titleRight">选项</p>
+    </div>
+    <div class="assayContent">
+        <div class="illnessTab">
+            <a class="active" href="javascript:;">血常规</a>
+            <a class="" href="javascript:;">尿常规</a>
+            <a href="javascript:;">前列腺按摩液</a>
+            <a href="javascript:;">前列腺特异性抗原</a>
+            <a href="javascript:;">B超报告单</a>
+            <a href="javascript:;">前列腺指诊</a>
+            <a href="javascript:;">尿流率</a>
+        </div>
+        <div class="illnessContent">
+            <div class="illnessBox">
+                <h2>血常规</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+                <!-- <div class="answerItem">
+                    <h3>1.前列腺体积=0.52*</h3>
+                    <a class="active" href="javascript:;">≥30ml</a>
+                    <a href="javascript:;"><30ml</a>
+                    <a href="javascript:;">无此项检查结果</a>
+                </div> -->
+            </div>
+            <div class="illnessBox">
+                <h2>尿常规</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+            </div>
+            <div class="illnessBox">
+                <h2>前列腺按摩液</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+            </div>
+            <div class="illnessBox">
+                <h2>前列腺特异性抗原</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+            </div>
+            <div class="illnessBox">
+                <h2>B超报告单</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+            </div>
+            <div class="illnessBox">
+                <h2>前列腺指诊</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+            </div>
+            <div class="illnessBox">
+                <h2>尿流率</h2>
+                <div class="timeBox">
+                    <p>检查时间: </p>
+                    <input type="text" placeholder="请选择日期">
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="submitBtn" href="javascript:;">完 成</a>
+    <div class="footer">copyright &copy; 北京安智杰科技有限公司</div>
+    <div id="dateContent" class="dateContent">
+        <div class="layui-inline" id="dateBox"></div>
+    </div>
+
+    <div class="ageSelect">
+        <p>您还有几项未选择，是否继续提交?</p>
+        <div class="btnBox">
+            <a class="yesBtn" href="javascript:;">是</a>
+            <a class="noBtn" href="javascript:;">否</a>
+        </div>
+    </div>
+</body>
+
+</html>

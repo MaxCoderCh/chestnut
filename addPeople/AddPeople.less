@@ -1,0 +1,188 @@
+@import "../css/root.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+
+.baseContent {
+    .margin-top(20);
+    .box-shadow();
+    .border-radius();
+    background: #ffffff;
+    .padding(0,0,0,30);
+    .title {
+        .font-size(31);
+        color: #333333;
+        .line-height(75);
+    }
+    .baseBox {
+        .padding(16,0,26,0);
+        display: flex;
+        align-items: center;
+        .fileBox {
+            position: relative;
+            .width(154);
+            .height(89);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            border-right: 1px solid #cccccc;
+            .fileImg {
+                .width(51);
+                .height(44);
+            }
+            .fileBtn {
+                position: absolute;
+                .width(154);
+                .height(89);
+                opacity: 0;
+            }
+        }
+        .baseInfoBox {
+            .height(89);
+            .margin-left(32);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .baseText {
+                .font-size(31);
+                color: #333333;
+            }
+            .idNumber {
+                .font-size(31);
+                color: #666666;
+            }
+        }
+    }
+    .relationBox {
+        .height(104);
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #cccccc;
+        .relationTitle {
+            .font-size(31);
+            color: #333333;
+        }
+    }
+}
+
+// 既往病史 - start
+.medicalContent {
+    // 病史的模块
+    .medicalItem {
+        .margin(26,0,0,0);
+        .border-radius();
+        .box-shadow();
+        background: @fff;
+        border: 1px solid transparent;
+
+        .searchBox {
+            display: flex;
+            align-items: center;
+            .box-shadow();
+            .height(128);
+
+            > p {
+                .width(280);
+                .text-indent(36);
+                .font-size(32);
+                color: @textColor;
+            }
+            .inputBox {
+                position: relative;
+                .width(364);
+                .height(62);
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    z-index: 99;
+                    top: 50%;
+                    .right(34);
+                    transform: translate(0, -50%);
+                    .width(30);
+                    .height(30);
+                    background: url("../images/search_false.png") no-repeat center;
+                    .background-size(30,30);
+                }
+                > input {
+                    flex: 1;
+                    .width(364);
+                    .height(62);
+                    border: 1px solid #cccccc;
+                    .border-radius();
+                    .padding(0,64,0,20);
+                    .margin(0,74,0,0,);
+                    .font-size(30);
+                }
+                .selectUl {
+                    display: none;
+                    position: absolute;
+                    .top(62);
+                    left: 0;
+                    z-index: 100;
+                    .width(364);
+                    border: 1px solid #666;
+                    .padding(20,20,20,20);
+                    .border-radius();
+                    background: @fff;
+                    .selectItem {
+                        .line-height(60);
+                        .font-size(28);
+                        background: @fff;
+                    }
+                }
+            }
+
+
+        }
+
+        .illnessBox {
+            display: none;
+            flex-wrap: wrap;
+            .padding(10,0,24,36);
+            > li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                letter-spacing: 1px;
+                background: @subtitleColor;
+                color: @fff;
+                .height(58);
+                .padding(0,30,0,30);
+                .font-size(30);
+                .border-radius();
+                .margin(20,20,0,0);
+            }
+        }
+    }
+    .medicalItem.active {
+        border: 1px solid #999999;
+        .searchBox {
+            .inputBox {
+                &:before {
+                    background-image: url('../images/search_true.png');
+                }
+                > input {
+                    border: 1px solid @subtitleColor;
+                }
+            }
+        }
+    }
+}
+
+// 既往病史 - end
+
+
+.submitBtn {
+    .margin-top(20);
+    .height(93);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3874B9;
+    color: #ffffff;
+    .font-size(33);
+    .border-radius(8,8,8,8);
+}

@@ -1,0 +1,266 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+
+.content {
+    .margin-top(20);
+    .padding(0,30,0,30);
+    .box-shadow();
+    .border-radius();
+    background: #fff;
+    .infoContent {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .padding(25,0,25,0);
+        .hearImg {
+            .width(120);
+            .height(120);
+        }
+        .baseInfo {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .margin-left(33);
+            .doctorName {
+                .font-size(33);
+                color: #333333;
+            }
+            .titleName {
+                .font-size(31);
+                color: #333333;
+                .margin-left(26);
+            }
+            .hospitalName {
+                .font-size(31);
+                color: #666666;
+            }
+        }
+        .focusBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .width(125);
+            .height(53);
+            .border-radius(53,53,53,53);
+            background: #2C6CB5;
+            color: #fff;
+            .font-size(26);
+        }
+        .focusTrue {
+            background: #cccccc;
+            color: #666666;
+        }
+    }
+    .statisticsBox {
+        .height(112);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #cccccc;
+        .statisticsItem {
+            flex: 1;
+            text-align: center;
+            .num {
+                .font-size(32);
+                color: #2C6CB5;
+                .line-height(40);
+            }
+            .explain {
+                .font-size(24);
+                color: #999999;
+            }
+        }
+        .statisticsItem + .statisticsItem{
+            position: relative;
+            &:after{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                .width(1);
+                .height(47);
+                background: #999999;
+            }
+        }
+    }
+    
+}
+
+
+// 问诊方式 - start
+.consultContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .margin-top(15);
+    background: #fff;
+    .box-shadow();
+    .border-radius();
+    .consultItem {
+        flex: 1;
+        text-align: center;
+        .consultText {
+            .margin-top(5);
+            .font-size(24);
+            color: #999999;
+            .line-height(50);
+        }
+        > img {
+            .width(80);
+            .height(80);
+        }
+        .consultPic {
+            .font-size(26);
+            color: #333333;
+            .line-height(56);
+        }
+    }
+}
+
+// 问诊方式 - ends
+
+// 折叠 start
+.foldContent {
+    position: relative;
+    .margin-top(15);
+    background: #fff;
+    .box-shadow();
+    .border-radius();
+    .padding(24,0,0,0);
+    .title {
+        position: relative;
+        .font-size(33);
+        color: #333333;
+        .line-height(33);
+        .text-indent(12);
+        .margin-left(29);
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            .width(5);
+            .height(33);
+            background: #2C6CB5;
+        }
+    }
+    .value {
+        .font-size(28);
+        color: #666666;
+        .line-height(40);
+        .margin(21,31,21,46);
+    }
+    .value.foldText {
+        .max-height(160);
+        overflow: hidden;
+    }
+    .foldBtn {
+        width: 100%;
+        .height(54);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        .box-shadow();
+        .border-radius(0,0,15,15);
+        color: #2C6CB5;
+        .font-size(22);
+        &.foldTrue {
+            position: static;
+        }
+        > img {
+            .width(21);
+            .height(12);
+            .margin-left(15);
+        }
+    }
+}
+// 折叠 end
+
+// 问诊确认弹框-start
+.inquiryContianer {
+    display: none;
+    .inquiryContent {
+        .width(660);
+        .height(472);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .inquiryTitleBox {
+            .line-height(82);
+            background: #ededed;
+            .font-size(30);
+            color: #333333;
+            .padding(0,0,0,23);
+        }
+        .inquiryCenterBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            text-align: center;
+            .padding(35,46,0,46);
+            background: #fff;
+            .inquiryPic {
+                .font-size(36);
+                color: #2647a5;
+            }
+            .inquiryPeople {
+                .font-size(30);
+                color: #333333;
+            }
+            .inquiryDesc {
+                .font-size(28);
+                color: #888888;
+            }
+            .inquiryProtocol {
+                background: url('../images/protocolYes.png') no-repeat left center;
+                .padding(0,0,0,30);
+                .background-size(32,32);
+                border-top: 1px solid #999999;
+                .font-size(28);
+                color: #333333;
+                .line-height(90);
+                .protocolHref {
+                    .font-size(28);
+                    color: #2c6cb5;
+                }
+            }
+        }
+        .inquiryBtnBox {
+            display: flex;
+            flex-direction: row;
+            .height(90);
+            border-top: 1px solid #999999;
+            > a {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .font-size(32);
+            }
+            .inquiryNoBtn {
+                background: #f1f1f1;
+                color: #666666;
+            }
+            .inquiryYesBtn {
+                background: #2c6cb5;
+                color: #fff;
+            }
+        }
+    }
+}
+
+// 问诊确认弹框-end

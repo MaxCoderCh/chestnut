@@ -1,0 +1,163 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+
+// 基本信息
+.baseInfoContent {
+    .margin-top(26);
+    .border-radius();
+    .box-shadow();
+    .padding(20,30,44,30);
+    background: @fff;
+    // title 部分
+    .titleBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .height(56);
+        > h2 {
+            position: relative;
+            color: @titleColor;
+            .font-size(34);
+            .text-indent(18);
+            letter-spacing: 1px;
+            &:before {
+                content: ' ';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                .width(2);
+                .height(30);
+                transform: translate(0, -50%);
+                background: @titleColor;
+            }
+        }
+        > a {
+            display: flex;
+            align-items: center;
+            border: 1px solid @titleColor;
+            .font-size(22);
+            color: @titleColor;
+            .height(40);
+            .padding(0,28,0,28);
+            .border-radius();
+        }
+    }
+    // 基本项模块
+    .baseInfoItem {
+        display: flex;
+        .height(94);
+        .margin(0,20,0,20);
+        align-items: center;
+        border-bottom: 1px solid #cccccc;
+        > p {
+            .font-size(30);
+            color: @textColor;
+        }
+        > input {
+            flex: 1;
+            .font-size(30);
+            .padding(0,30,0,30);
+        }
+    }
+}
+// 职业选择
+.professionContent {
+    .margin-top(26);
+    .padding(10,30,20,30);
+    .border-radius();
+    .box-shadow();
+    background: @fff;
+    // 职业选择标题
+    > h2 {
+        position: relative;
+        color: @titleColor;
+        .font-size(34);
+        .line-height(80);
+        .text-indent(18);
+        letter-spacing: 1px;
+        &:before {
+            content: ' ';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            .width(2);
+            .height(30);
+            transform: translate(0, -50%);
+            background: @titleColor;
+        }
+    }
+    // 职业选项部分
+    .professionBox {
+        // 职业模块
+        display: flex;
+        flex-wrap: wrap;
+        .professionItem {
+            color: #666;
+            .font-size(30);
+            .line-height(68);
+            .padding(0,30,0,48);
+            .margin-left(20);
+            letter-spacing: 1px;
+            background: url('../images/radio_false.png') no-repeat left center;
+            .background-size(28, 28);
+        }
+        .professionItem.active {
+            background: url('../images/radio_true.png') no-repeat left center;
+            .background-size(28, 28);
+            color: @subtitleColor;
+        }
+    }
+}
+
+.startBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    .margin-top(60);
+    .width(611);
+    .height(82);
+    color: #999999;
+    background: #ededed;
+    border: 1px solid #999999;
+    .font-size(32);
+    letter-spacing: 1px;
+}
+.startBtn.active {
+    color: #000;
+    background: @fff;
+    border: 1px solid @titleColor;
+}
+
+// 判断年龄
+.ageSelect {
+    display: none;
+    .width(600);
+    .padding(30,30,30,30);
+    .border-radius();
+    background: @fff;
+    > p {
+        text-align: center;
+        .font-size(34);
+        color: @titleColor;
+    }
+    .btnBox {
+        .margin-top(50);
+        display: flex;
+        justify-content: space-between;
+        > a {
+            flex: 1;
+            .line-height(40);
+            .padding(10,0,10,0);
+            text-align: center;
+            border: 1px solid @subtitleColor;
+            color: @titleColor;
+            .margin(0,10,0,10);
+
+        }
+    }
+}

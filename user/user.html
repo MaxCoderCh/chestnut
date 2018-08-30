@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>个人中心</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+    />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        // console.log(navigator.userAgent)// 设备信息
+        !(function (doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function () {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/user/user.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/js/root.js"></script>
+    <script src="/chestnut/js/utils.js"></script>
+    <script src="/chestnut/js/getToken.js"></script>
+    <script src="/chestnut/user/user.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <form name="aaaaaa" method="get" action="https://open.weixin.qq.com/connect/oauth2/authorize">
+        <input type="hidden" name="appid" value="wx879a26e37acadb20">
+        <input type="hidden" name="redirect_uri" value="http://www.yilaiyiwang.com/chestnut/user/user.html">
+        <input type="hidden" name="response_type" value="code">
+        <input type="hidden" name="scope" value="snsapi_userinfo">
+        <input type="hidden" name="state" value="STATE#wechat_redirect">
+    </form>
+    <a href="/chestnut/newrecord/newrecord.html" class="userContent">
+        <div class="imgBox">
+            <img class="userImg" src="/chestnut/images/user.png" alt="头像">
+        </div>
+        <div class="userInfo">
+            <p class="username ellipse">用户名</p>
+            <p class="account ellipse">档案号：</p>
+        </div>
+        <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+    </a>
+    <h2>问诊信息</h2>
+    <div class="moduleContent">
+        <a class="item" href="/chestnut/inquiryOrder/InquiryOrder.html">
+            <img src="/chestnut/images/user1.png" alt="">
+            <div class="rightBox">
+                <p>问诊订单</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+        <a class="item" href="/chestnut/managePeople/ManagePeople.html">
+            <img src="/chestnut/images/user2.png" alt="">
+            <div class="rightBox">
+                <p>管理就诊人</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+        <a class="item" href="javascript:;">
+            <img src="/chestnut/images/user3.png" alt="">
+            <div class="rightBox">
+                <p>绑定就诊卡</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+    </div>
+    <h2>就医信息</h2>
+    <div class="moduleContent">
+        <a class="item" href="/chestnut/focusDoctor/FocusDoctor.html">
+            <img src="/chestnut/images/user4.png" alt="">
+            <div class="rightBox">
+                <p>我的医生</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+        <a class="item" href="javascript:;">
+            <img src="/chestnut/images/user5.png" alt="">
+            <div class="rightBox">
+                <p>报告查询</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+        <a class="item" href="/chestnut/feedback/Feedback.html">
+            <img src="/chestnut/images/user6.png" alt="">
+            <div class="rightBox">
+                <p>意见反馈</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+    </div>
+    <h2>评估信息</h2>
+    <div class="moduleContent">
+        <a class="item" href="/chestnut/record/record.html">
+            <img src="/chestnut/images/user7.png" alt="">
+            <div class="rightBox">
+                <p>评测记录</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+        <a class="item" href="/chestnut/unscramble/unscramble.html">
+            <img src="/chestnut/images/user8.png" alt="">
+            <div class="rightBox">
+                <p>解读报告</p>
+                <img class="arrowRight" src="/chestnut/images/arrowRight.png" alt="">
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>

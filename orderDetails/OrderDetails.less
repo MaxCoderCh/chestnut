@@ -1,0 +1,171 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,15,15);
+}
+
+.infoContent {
+    .margin-top(20);
+    display: flex;
+    flex-direction: row;
+    background: #ffffff;
+    .box-shadow();
+    .border-radius();
+    .padding(30,60,30,30);
+    .hearImg {
+        .width(120);
+        .height(120);
+        border-radius: 50%;
+    }
+    .infoBox {
+        .margin-left(30);
+        .nameAndTitle {
+            .doctorName{
+                .font-size(33);
+                color: #333333;
+            }
+            .titleName{
+                .font-size(31);
+                color: #333333;
+                .margin-left(30);
+            }
+        }
+        .hospitalName {
+            .font-size(31);
+            color: #666666;
+        }
+        .goodAt {
+            display: flex;
+            justify-content: space-between;
+            .goodAtTitle {
+                .width(70);
+                .font-size(28);
+                color: #333333;
+            }
+            .goodAtValue {
+                flex: 1;
+                .font-size(28);
+                color: #666666;
+                .line-height(40);
+                .height(80);
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+// 发订单
+.compileContent {
+    .margin-top(20);
+    .box-shadow();
+    .border-radius();
+    background: #ffffff;
+    .padding(0,30,26,30);
+    // 选择咨询人
+    .selectBox {
+        .height(96);
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #cccccc;
+        .selectText {
+            .font-size(33);
+            color: #333333;
+        }
+        .selectBtn {
+            .height(96);
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            .font-size(31);
+            color: #666666;
+            > img {
+                .width(14);
+                .height(24);
+                .margin(0,9,0,15);
+            }
+        }
+    }
+    .inputBox {
+        .inputTitle {
+            .font-size(33);
+            color: #333333;
+            .line-height(85);
+        }
+        .input {
+            width: 100%;
+            .height(248);
+            overflow-y: scroll;
+            background: @bgColor;
+            .line-height(40);
+            .padding(10,17,10,17);
+            color: #333333;
+        }
+    }
+}
+
+// 图片 - start
+.fileContent {
+    .margin-top(15);
+    .box-shadow();
+    .border-radius();
+    background: #ffffff;
+    .padding(0,30,0,30);
+    .title {
+        .font-size(33);
+        color: #333333;
+        .line-height(76);
+    }
+    .fileBox {
+        display: flex;
+        flex-direction: row;
+        .padding(0,0,27,0);
+        > ul {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            .imgItem {
+                position: relative;
+                .margin(0,24,24,0);
+                .photo {
+                    .width(113);
+                    .height(103);
+                    .border-radius(6,6,6,6);
+                }
+                .deleteImg {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    .width(34);
+                    .height(34);
+                    transform: translate(50%,-50%);
+                }
+            }
+        }
+    }
+}
+// 图片 - end
+
+.adviceContent {
+    display: none;
+    .margin-top(15);
+    background: #ffffff;
+    .border-radius();
+    .box-shadow();
+    .padding(0,30,30,30);
+    .adviceTitle {
+        .font-size(34);
+        color: #333333;
+        .line-height(84);
+    }
+    .adviceValue {
+        .padding(10,10,10,10);
+        background: #F6F6F6;
+        .line-height(42);
+        .font-size(28);
+        color: #333333;
+    }
+}

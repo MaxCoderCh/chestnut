@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>选择就诊人</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+    />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        !(function (doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function () {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/selectPatients/SelectPatients.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/plugins/layui/layui.all.js"></script>
+    <script src="/chestnut/js/utils.js" charset="utf-8"></script>
+    <script src="/chestnut/js/root.js" charset="utf-8"></script>
+    <script src="/chestnut/selectPatients/SelectPatients.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="noPeopleBox">
+            <img class="noPeopleImg" src="../images/noPeople.png" alt="暂无就诊人">
+            <p class="noPeopleText">暂无就诊人，去添加就诊人</p>
+            <a class="addPeopleBtn" href="javascript:;">添加就诊人</a>
+        </div>
+    </div>
+
+    <!-- 提示框 - start -->
+    <div class="confirmContent">
+        <div class="confirmBox">
+            <p class="titleText">确定要删除
+                <span class="objName"></span>就诊信息？</p>
+        </div>
+        <div class="btnBox">
+            <a class="btn noBtn" href="javascript:;">取消</a>
+            <a class="btn yesBtn" href="javascript:;">确认</a>
+        </div>
+    </div>
+    <!-- 提示框 - end -->
+    <!-- 就诊人列表-start -->
+    <div class="peopleList">
+        <!-- <div class="peopleItem">
+            <div class="infoBox">
+                <p>
+                    <span class="doctorName">姓名</span>
+                    <span class="relation">(关系)</span>
+                </p>
+                <p>
+                    <span class="sex">男</span>
+                    <span class="age">年龄</span>
+                </p>
+            </div>
+            <div class="btnBox">
+                <a class="compileBtn" href="javascript:;">
+                    <img src="../images/compileBtn.png" alt="">编辑</a>
+                <a class="deleteBtn" href="javascript:;">
+                    <img src="../images/deleteBtn.png" alt="">删除</a>
+            </div>
+        </div> -->
+    </div>
+    <!-- 就诊人列表-end -->
+
+    <a class="addPersonBtn" href="javascript:;">
+        <img src="../images/add.png" alt="">添加就诊人</a>
+
+</body>
+
+</html>

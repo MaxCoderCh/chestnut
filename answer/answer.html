@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
+    <title>评估答题</title>
+    <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <!-- 作者 -->
+    <meta name="author" content="">
+    <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
+    <meta name="description" content="">
+    <!-- 关键字 不超过100个字符50个文字以内 -->
+    <meta name="Keywords" content="">
+    <meta name="full-screen" content="yes" />
+    <!-- 将不识别手机号 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 将不识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 禁止跳转至地图 -->
+    <meta name="format-detection" content="address=no" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript">
+        // console.log(navigator.userAgent)// 设备信息
+        !(function(doc, win) {
+            var docEle = doc.documentElement, //获取html元素
+                event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
+                fn = function() {
+                    var width = docEle.clientWidth;
+                    width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
+                }
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="/chestnut/css/reset.css">
+    <link rel="stylesheet/less" type="text/css" href="/chestnut/answer/answer.less" />
+    <script src="/chestnut/js/jquery.js" charset="utf-8"></script>
+    <script src="/chestnut/plugins/layui/layui.all.js" charset="utf-8"></script>
+    <script src="/chestnut/js/less.js"></script>
+    <script src="/chestnut/js/root.js"></script>
+    <script src="/chestnut/js/utils.js"></script>
+    <script src="/chestnut/answer/answer.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="latelyContent"></div>
+    <div class="latelyBox">
+        <div class="latelyInfo">
+            <h2>您上次经评估等分为: <span class="minute"></span><span class="degree"></span></h2>
+            <p class="time"></p>
+        </div>
+        <a class="latelyBtn" href="javascript:;">去查看</a>
+    </div>
+    <div class="answerContent clearfix">
+        <div class="pandectBox"><span class="answerIndex">0</span>/<span class="answerCount"></span>题</div>
+        <div class="leftItem title">
+            <div class="portraitBox">
+                <img src="/chestnut/images/user.png" alt="头像">
+            </div>
+            <div class="topicBox">
+                前列腺疾病随着年龄的增高而增高40岁以后迅速增加，在90岁几乎达到100%。在中国15~60岁男性报告前列腺炎症状的比例为8.4%；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您即将填写国际通用的慢性前列腺炎症状评分量表，一共包含9个问题，请您认真思考后填写。
+            </div>
+        </div>
+        <!-- <div class="leftItem">
+            <div class="portraitBox">
+                <img src="/chestnut/images/user.png" alt="头像">
+            </div>
+            <div class="topicBox">
+                在过去一周下述部位有没有疼痛或不适
+            </div>
+        </div>
+        <div class="rightItem">
+            <div class="optionsBox">
+                <a class="active" href="javascript:;">是</a>
+                <a href="javascript:;">否</a>
+            </div>
+            <div class="portraitBox">
+                <img src="/chestnut/images/user.png" alt="头像">
+            </div>
+        </div>
+        <div class="rightItem popupBox">
+            <a class="popupBtn" href="javascript:;">点击请选择</a>
+            <div class="portraitBox">
+                <img src="/chestnut/images/user.png" alt="头像">
+            </div>
+        </div> -->
+    </div>
+
+    <div class="completeBox">
+        <p>感谢你参与，你的测评已结束，点击完成查看</p>
+        <a class="completeBtn" href="javascript:;">完 成</a>
+    </div>
+
+    <div class="multitermContent">
+        <div class="multitermBox">
+            <h3>下列哪一个数字是可以描述你过去1周发生疼痛和不适时的“平均程度”</h3>
+            <div class="optionBox">
+                <!-- <a class="optionBtn active" href="javascript:;">0分</a>
+                <a class="optionBtn" href="javascript:;">0分</a>-->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

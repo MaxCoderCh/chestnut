@@ -1,0 +1,81 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+
+
+.title {
+    .font-size(34);
+    color: @titleColor;
+    .text-indent(10);
+    .line-height(110);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.itemBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .height(128);
+    .border-radius();
+    .box-shadow();
+    .margin(0,0,26,0);
+    background: url('../images/assay_false.png') no-repeat left center @fff;
+    .background-size(12, 128);
+    > p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .width(72);
+        .height(72);
+        border-radius: 50%;
+        border: 1px solid @titleColor;
+        color: @titleColor;
+        .margin(0,26,0,40);
+        .font-size(32);
+    }
+    .itemRight {
+        flex: 1;
+        > h3 {
+            .font-size(32);
+            color: @textColor;
+            letter-spacing: 2px;
+        }
+        .optinBox{
+            .padding(0,10,0,0);
+            display: flex;
+            flex-wrap: wrap;
+            span {
+                position: relative;
+                .padding(0,10,0,24);
+                color: #666666;
+                .font-size(24);
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform:translate(0, -50%);
+                    .width(12);
+                    .height(12);
+                    border: 1px solid @subtitleColor;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+    }
+}
+.itemBox.active {
+    background: url('../images/assay_true.png') no-repeat left center @fff;
+    .background-size(12, 128);
+    .itemRight {
+        > h3 {
+            color: @titleColor;
+        }
+
+    }
+}

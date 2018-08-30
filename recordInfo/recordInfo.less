@@ -1,0 +1,72 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+.topicContent {
+    .topicItem {
+        .margin-top(22);
+        background: @fff;
+        border: 1px solid #cccccc;
+        .box-shadow();
+        .border-radius();
+
+        .topicBox {
+            .padding(17,40,0,17);
+            border-bottom: 1px solid #cccccc;
+
+            > p {
+                display: flex;
+                .font-size(34);
+                color: @textColor;
+            }
+
+            .optionBox {
+                display: flex;
+                .margin(12,0,25,40);
+                flex-wrap: wrap;
+                > span {
+                    display: block;
+                    .margin-right(55);
+                    .font-size(36);
+                    color: #666666;
+                    .padding(0,0,0,55);
+                    background: url("../images/radio_false.png") no-repeat left center;
+                    .background-size(28,28);
+
+                    &.active {
+                        color: @titleColor;
+                        background: url("../images/radio_true.png") no-repeat left center;
+                        .background-size(28,28);
+                    }
+                }
+            }
+        }
+
+        .solutionBox {
+            display: flex;
+            .margin(24,0,27,50);
+
+            .titleText {
+                .font-size(34);
+                color: @titleColor;
+                .line-height(58);
+            }
+
+            .optionBox {
+                display: flex;
+                flex: 1;
+                flex-wrap: wrap;
+                > span {
+                    display: block;
+                    .margin(0,40, 0 ,20);
+                    .font-size(34);
+                    color: @textColor;
+                    .line-height(58);
+                }
+            }
+        }
+    }
+}

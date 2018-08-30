@@ -1,0 +1,121 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+// 概述结果
+
+.summarizeContent {
+    .margin(20,0,0,0);
+    .box-shadow();
+    .border-radius();
+    .padding(25,0,30,18);
+
+    .summarizeTitle {
+        position: relative;
+        .font-size(34);
+        color: @titleColor;
+        .padding(0,0,0,15);
+        letter-spacing: 2px;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            .top(8);
+            left: 0;
+            .width(2);
+            .height(30);
+            background: @titleColor;
+        }
+    }
+
+    .summarizeText {
+        .margin(12,36,0,36);
+        .font-size(32);
+        color: @textColor;
+        .line-height(40);
+        letter-spacing: 2px;
+    }
+}
+// 细分结果
+
+.subdivideContent {
+    .margin(22,0,0,0);
+    .box-shadow();
+    .border-radius();
+
+    .subdivideTabContent {
+        overflow: hidden;
+        border-bottom: 1px solid #cccccc;
+        transform: rotate(0,0);
+
+        .subdivideTabBox {
+            position: relative;
+            top: 0;
+            left: 0;
+            // width: 700px;
+            // display: flex;
+            > li {
+                float: left;
+                .margin(0,33,0,33);
+                border-bottom: 2px solid transparent;
+
+                &.active {
+                    border-bottom: 2px solid @titleColor;
+
+                    > a {
+                        color: @titleColor;
+                    }
+                }
+
+                > a {
+                    display: block;
+                    // white-space: nowrap;
+                    margin: 0;
+                    padding: 0;
+                    .line-height(84);
+                    .font-size(34);
+                    color: @textColor;
+                }
+            }
+        }
+    }
+
+    .subdivideMainContent {
+        .max-height(800);
+        // flex: 1;
+        overflow-y: scroll;
+        .subdivideMain {
+            // position: relative;
+            // top: 0;
+            // left: 0;
+            .padding(0,30,0,30);
+
+            > h3 {
+                .line-height(90);
+                .font-size(34);
+                color: @textColor;
+            }
+
+            .otherItem {
+                display: flex;
+                .margin-bottom(11);
+
+                > span {
+                    color: @subtitleColor;
+                    .font-size(34);
+                }
+
+                > p {
+                    .margin-left(20);
+                    color: #666;
+                    .font-size(32);
+                    .line-height(40);
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,166 @@
+@import "../css/root.less";
+@import "../css/footer.less";
+body {
+    background: @bgColor;
+    .padding(0,15,0,15);
+}
+
+.content {
+
+}
+.noPeopleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .noPeopleImg{
+        .width(306);
+        .height(326);
+        .margin(128,0,37,0);
+    }
+    .noPeopleText{
+        .font-size(34);
+        color: '#333333';
+    }
+    .addPeopleBtn{
+        display: flex;
+        .width(275);
+        .height(73);
+        border: 1px solid #2c6cb5;
+        .border-radius(10);
+        align-items: center;
+        justify-content: center;
+        color: #2c6cb5;
+        .margin-top(46);
+    }
+}
+
+
+// confirm 弹框 - start
+
+.confirmContent {
+    display: none;
+    // flex-direction: column;
+    // justify-content: space-between;
+    .width(592);
+    .height(323);
+    background: #fff;
+    .border-radius(10);
+    overflow: hidden;
+    .confirmBox{
+        .height(233);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .padding(70,70,70,70);
+        .titleText {
+            .font-size(34);
+            color: #333333;
+        }
+    }
+    .btnBox{
+        display: flex;
+        .height(90);
+        flex-direction: row;
+        border-top: 1px solid #999999;
+        .btn {
+            display: flex;
+            .height(90);
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            .font-size(32);
+        }
+        .noBtn {
+            color: #666666;
+            border-right: 1px solid #999999;
+        }
+        .yesBtn {
+            color: #2c6cb5;
+            font-weight: 500;
+        }
+    }
+}
+
+// confirm 弹框 - end
+
+// 就诊人 列表 - start
+.peopleList {
+    .peopleItem {
+        .margin-top(20);
+        .box-shadow();
+        .border-radius();
+        background: #fff;
+        .infoBox {
+            .padding(21,29,7,29);
+            > p {
+                .margin-bottom(13);
+                .line-height(40);
+                .doctorName {
+                    .font-size(35);
+                    color: #333333;
+                }
+                .relation {
+                    .font-size(31);
+                    color: #333333;
+                }
+                .sex ,.age{
+                    .font-size(31);
+                    color: #666666;
+                }
+            }
+        }
+        .btnBox {
+            .height(64);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-top: 1px solid #cccccc;
+            > a {
+                display: flex;
+                align-items: center;
+                .font-size(28);
+                color: #666666;
+                .margin(0,21,0,21);
+            }
+            .compileBtn {
+                > img {
+                    .width(23);
+                    .height(24);
+                    .margin-right(8);
+                }
+            }
+            .deleteBtn {
+                > img {
+                    .width(27);
+                    .height(27);
+                    .margin-right(8);
+                } 
+            }
+            
+        }
+    }
+    
+}
+// 就诊人 列表 - end
+
+.addPersonBtn {
+    .margin-top(20);
+    .margin-bottom(20);
+    .height(112);
+    .box-shadow();
+    .border-radius();
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .font-size(35);
+    color: #2C6CB5;
+    > img {
+        .width(46);
+        .height(46);
+        .margin(0,24,0,30);
+    }
+}
+
+
+    
