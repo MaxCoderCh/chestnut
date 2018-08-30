@@ -168,8 +168,8 @@
                         success: function (data) {
                             console.log(data)
                             if (data.code == 20000) {
-                                // appId, timeStamp, nonceStr, package, paySign
-                                onBridgeReady(data.result.appid, data.result.timeStamp, data.result.nonce_str, data.result.prepay_id, data.result.sign);
+                                // appId, timeStamp, nonceStr, package,signType, paySign
+                                onBridgeReady(data.result.appId, data.result.timeStamp, data.result.nonceStr, data.result.package, data.result.signType, data.result.sign);
                             } else {
 
                             }
@@ -181,13 +181,13 @@
                 }
             })
         })
-        function onBridgeReady(appId, timeStamp, nonceStr, package, paySign) {
+        function onBridgeReady(appId, timeStamp, nonceStr, package, signType, paySign) {
             WeixinJSBridge.invoke('getBrandWCPayRequest', {
                 "appId": appId,
                 "timeStamp": timeStamp,
                 "nonceStr": nonceStr,
                 "package": package,
-                "signType": "MD5",//HMAC-SHA256
+                "signType": signType,
                 "paySign": paySign
             }, function (res) {
                 console.log(res)
