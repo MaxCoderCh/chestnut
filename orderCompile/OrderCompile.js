@@ -132,7 +132,7 @@ $(function () {
     // 查看大图
     $(".imgList").delegate(".imgItem", "click", function () {
         var urls = [];
-        for (var i = 0; i < $(".imgList .imgItem").legnth; i++) {
+        for (var i = 0; i < $(".imgList .imgItem").length; i++) {
             urls.push($(".imgList .imgItem").eq(i).attr("url"))
         }
         wx.previewImage({
