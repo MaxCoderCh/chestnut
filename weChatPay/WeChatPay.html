@@ -91,7 +91,7 @@
             var orderId = window.location.href.split("?")[1];
             $.ajax({
                 headers: {
-                    token:myLocal.getItem("token"),
+                    token: myLocal.getItem("token"),
                 },
                 type: 'POST',
                 url: IP + '/api-order/order/inquiry/getOrder',
@@ -186,8 +186,8 @@
                 "appId": appId,
                 "timeStamp": timeStamp,
                 "nonceStr": nonceStr,
-                "package": "prepay_id=" + package,
-                "signType": "HMAC-SHA256",
+                "package": package,
+                "signType": "MD5",//HMAC-SHA256
                 "paySign": paySign
             }, function (res) {
                 console.log(res)
