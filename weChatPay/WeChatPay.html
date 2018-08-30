@@ -187,7 +187,7 @@
                 "timeStamp": timeStamp,
                 "nonceStr": nonceStr,
                 "package": "prepay_id=" + package,
-                "signType": "MD5",
+                "signType": "HMAC-SHA256",
                 "paySign": paySign
             }, function (res) {
                 console.log(res)
