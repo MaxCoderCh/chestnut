@@ -68,7 +68,7 @@
                 } else {
                     $.ajax({
                         headers: {
-                            token:myLocal.getItem("token"),
+                            token: myLocal.getItem("token"),
                         },
                         type: 'POST',
                         url: IP + '/api-stata/feedback/add',
@@ -83,10 +83,14 @@
                             console.log(data)
                             if (data.code === 20000) {
                                 layer.msg("提交成功");
-                                window.history.back();
+                                setTimeout(function () {
+                                    window.history.back();
+                                }, 1500)
                             } else {
                                 layer.msg("提交成功");
-                                window.history.back();
+                                setTimeout(function () {
+                                    window.history.back();
+                                }, 1500)
                             }
                         },
                         error: function (err) {

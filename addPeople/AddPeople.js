@@ -127,7 +127,6 @@ $(function () {
             dataType: 'json',
             data: {
                 "id": id,
-                "patientId": myLocal.getItem('patientId'),
             },
             success: function (data) {
                 console.log(data)
