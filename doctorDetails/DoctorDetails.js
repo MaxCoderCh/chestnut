@@ -3,7 +3,7 @@ $(function () {
     $.ajax({
         headers: {
             Accept: "application/json; charset=utf-8",
-            token: "546eb86e866b11e8a09b68cc6e5c9c74"
+            token: myLocal.getItem("token"),
         },
         type: 'GET',
         url: IP + '/api-user/doctor/detail/getDoctorDetailById?doctorId=' + doctorId,
@@ -42,7 +42,7 @@ $(function () {
     $.ajax({
         headers: {
             Accept: "application/json; charset=utf-8",
-            token: "546eb86e866b11e8a09b68cc6e5c9c74"
+            token: myLocal.getItem("token"),
         },
         type: 'GET',
         url: IP + '/api-goods/goods/inquiry/queryListByDoctor?doctorId=' + doctorId,
@@ -90,7 +90,7 @@ $(function () {
             $.ajax({
                 headers: {
                     Accept: "application/json; charset=utf-8",
-                    token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                    token: myLocal.getItem("token"),
                 },
                 type: 'POST',
                 url: IP + '/api-user/fansStar/unFocus',
@@ -118,7 +118,7 @@ $(function () {
             $.ajax({
                 headers: {
                     Accept: "application/json; charset=utf-8",
-                    token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                    token: myLocal.getItem("token"),
                 },
                 type: 'POST',
                 url: IP + '/api-user/fansStar/focus',
@@ -161,7 +161,7 @@ $(function () {
     })
     $('.inquiryContianer').find(".inquiryYesBtn").click(function () {
         // 存服务类型id
-        myLocal.setItem("goodsInfo", JSON.parse($(this).attr("data")))
+        myLocal.setItem("goodsInfo", JSON.parse($(".imgBtn").attr("data")))
         window.location = "/chestnut/imgCounsel/ImgCounsel.html";
     })
 

@@ -65,7 +65,7 @@ $(function () {
                     }
                     $.ajax({
                         headers: {
-                            token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                            token: myLocal.getItem("token"),
                         },
                         type: 'POST',
                         url: IP + '/api-third/cos/uploads',
@@ -118,7 +118,7 @@ $(function () {
         var _thisObj = $(this);
         $.ajax({
             headers: {
-                token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-third/cos/delete',
@@ -154,7 +154,7 @@ $(function () {
         } else {
             $.ajax({
                 headers: {
-                    token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                    token: myLocal.getItem("token"),
                 },
                 type: 'POST',
                 url: IP + '/api-archive/medical/report/addInquiryReport',
@@ -173,7 +173,7 @@ $(function () {
                         var patientArchive = data.result;
                         $.ajax({
                             headers: {
-                                token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                                token: myLocal.getItem("token"),
                             },
                             type: 'POST',
                             url: IP + '/api-order/order/inquiry/createOrder',

@@ -29,7 +29,7 @@ $(function () {
                 $.ajax({
                     headers: {
                         Accept: "application/json; charset=utf-8",
-                        token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                        token: myLocal.getItem("token"),
                     },
                     type: 'GET',
                     url: IP + '/api-user/doctor/detail/getDoctorDetailById?doctorId=' + doctorId,
@@ -57,7 +57,7 @@ $(function () {
                 $.ajax({
                     headers: {
                         Accept: "application/json; charset=utf-8",
-                        token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                        token: myLocal.getItem("token"),
                     },
                     type: 'GET',
                     url: IP + '/api-record/patient/getBaseInfoById?patientId=' + patientId,
@@ -82,7 +82,7 @@ $(function () {
                 $.ajax({
                     headers: {
                         Accept: "application/json; charset=utf-8",
-                        token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                        token: myLocal.getItem("token"),
                     },
                     type: 'GET',
                     url: IP + '/api-archive/medical/report/getByGroupNumber?groupNumber=' + patientArchive,
@@ -113,7 +113,7 @@ $(function () {
                 $.ajax({
                     headers: {
                         Accept: "application/json; charset=utf-8",
-                        token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                        token: myLocal.getItem("token"),
                     },
                     type: 'GET',
                     url: IP + '/api-assessmen/record/inquiry/getByArchive?archive=' + patientArchive,

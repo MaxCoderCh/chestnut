@@ -23,7 +23,7 @@ $(function () {
         $.ajax({
             headers: {
                 Accept: "application/json; charset=utf-8",
-                token: "546eb86e866b11e8a09b68cc6e5c9c74"
+                token: myLocal.getItem("token"),
             },
             type: 'GET',
             url: httpUrl[_index],
