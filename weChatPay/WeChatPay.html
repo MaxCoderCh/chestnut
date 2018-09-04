@@ -193,8 +193,10 @@
                 console.log(res)
                 if (res.err_msg == "get_brand_wcpay_request:ok") {
                     // 支付成功操作
+                    window.location = "/chestnut/user/user.html";
                 } else {
                     // 支付失败操作
+                    window.location = "/chestnut/user/user.html";
                 }
             });
         }

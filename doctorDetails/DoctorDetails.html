@@ -54,10 +54,18 @@
     <script src="/chestnut/plugins/layui/layui.all.js"></script>
     <script src="/chestnut/js/utils.js" charset="utf-8"></script>
     <script src="/chestnut/js/root.js" charset="utf-8"></script>
+    <script src="/chestnut/js/getToken.js"></script>
     <script src="/chestnut/doctorDetails/DoctorDetails.js" charset="utf-8"></script>
 </head>
 
 <body>
+    <form name="aaaaaa" method="get" action="https://open.weixin.qq.com/connect/oauth2/authorize">
+        <input type="hidden" name="appid" value="wx879a26e37acadb20">
+        <input type="hidden" name="redirect_uri" value="http://www.yilaiyiwang.com/chestnut/doctorDetails/DoctorDetails.html">
+        <input type="hidden" name="response_type" value="code">
+        <input type="hidden" name="scope" value="snsapi_userinfo">
+        <input type="hidden" name="state" value="STATE#wechat_redirect">
+    </form>
     <div class="content">
         <div class="infoContent">
             <img class="hearImg" src="../images/defaultHear.png" alt="">
