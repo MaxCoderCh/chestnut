@@ -147,6 +147,7 @@ $(function () {
     // 加关注 、 取消关注  -  end
 
     $(".imgBtn").click(function () {
+        $(".imgPicAffirm").html($(".imgBtn").attr("data").goodsPrice);
         layer.open({
             title: '',
             type: 1,
