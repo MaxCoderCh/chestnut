@@ -101,20 +101,7 @@
                 success: function (data) {
                     console.log(data)
                     if (data.code == '20000') {
-                        if (data.result.orderPrice.indexOf(".") != -1) {
-                            // 是小数
-                            if (data.result.orderPrice.split('.')[1].length == 1) {
-                                // 一位小数
-                                $(".orderPrice").html(data.result.orderPrice + "0");// 价格
-                            } else if (data.result.orderPrice.split('.')[1].length == 2) {
-                                // 两位小数
-                                $(".orderPrice").html(data.result.orderPrice);// 价格
-                            }
-                        } else {
-                            // 是整数
-                            $(".orderPrice").html(data.result.orderPrice + ".00");// 价格
-                        }
-
+                        $(".orderPrice").html(data.result.orderPrice / 100);// 价格
                         // 咨询类型
                         switch (data.result.orderType) {
                             case "PICTURE_INQUIRY_TYPE":
