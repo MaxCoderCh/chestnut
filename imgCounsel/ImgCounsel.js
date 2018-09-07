@@ -2,6 +2,7 @@ $(function () {
     var goodsInfo = myLocal.getItem("goodsInfo");
     if (myLocal.getItem("patientInfo")) {
         var patientInfo = myLocal.getItem("patientInfo");
+        myLocal.deleteItem("patientInfo");
         $(".selectBtnText").html(patientInfo.patientName ? patientInfo.patientName : '点击选择就诊人');
     }
 
@@ -28,7 +29,6 @@ $(function () {
     $(".fileInput").change(function () {
         var newFileArr = [];
         var uploadFile = $(this)[0].files; // 某一块添加时的原始数据
-        var _html = '';
         var fileLength = 0;
         var reader = new FileReader();
         reader.readAsDataURL(uploadFile[fileLength]);
@@ -142,6 +142,7 @@ $(function () {
                 console.log(err);
             },
         })
+        return false;
     })
     // 文件 处理 - start
 

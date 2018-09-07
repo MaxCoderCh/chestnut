@@ -71,7 +71,7 @@ $(function () {
         userInfo = eval("(" + $(this).attr("name") + ")");
         // 存储患者信息
         myLocal.setItem("patientInfo", userInfo);
-        window.history.back();
+        window.location = "/chestnut/imgCounsel/ImgCounsel.html";
     })
     // 选择就诊人-end
     // 就诊人编辑事件 - start
@@ -104,7 +104,7 @@ $(function () {
     $(".confirmContent").find(".yesBtn").click(function () {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-record/userPatient/remove',

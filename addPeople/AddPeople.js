@@ -400,6 +400,7 @@ $(function () {
             layer.msg("请先上传身份证");
         } else {
             if (flag) {
+                // 新建就诊人
                 $.ajax({
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -422,7 +423,7 @@ $(function () {
                     success: function (data) {
                         console.log(data)
                         if (data.code == 20000) {
-                            window.location = "/chestnut/managePeople/ManagePeople.html"
+                            window.history.back();
                         } else if (data.code == '50000') {
 
                         } else {
@@ -434,6 +435,7 @@ $(function () {
                     },
                 })
             } else {
+                // 修改就诊人
                 $.ajax({
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -457,7 +459,6 @@ $(function () {
                         if (data.code == 20000) {
                             layer.msg("修改成功");
                             setTimeout(function () {
-                                // window.location = "/chestnut/managePeople/ManagePeople.html"
                                 window.history.back();
                             }, 1000)
                         } else if (data.code == '50000') {

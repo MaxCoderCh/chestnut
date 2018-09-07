@@ -6,8 +6,7 @@
     <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
     <title>确认支付</title>
     <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
     <!-- 作者 -->
     <meta name="author" content="">
     <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
@@ -102,7 +101,20 @@
                 success: function (data) {
                     console.log(data)
                     if (data.code == '20000') {
-                        $(".orderPrice").html(data.result.orderPrice);// 价格
+                        if (data.result.orderPrice.indexOf(".") != -1) {
+                            // 是小数
+                            if (data.result.orderPrice.split('.')[1].length == 1) {
+                                // 一位小数
+                                $(".orderPrice").html(data.result.orderPrice + "0");// 价格
+                            } else if (data.result.orderPrice.split('.')[1].length == 2) {
+                                // 两位小数
+                                $(".orderPrice").html(data.result.orderPrice);// 价格
+                            }
+                        } else {
+                            // 是整数
+                            $(".orderPrice").html(data.result.orderPrice + ".00");// 价格
+                        }
+
                         // 咨询类型
                         switch (data.result.orderType) {
                             case "PICTURE_INQUIRY_TYPE":

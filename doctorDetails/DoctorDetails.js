@@ -59,14 +59,17 @@ $(function () {
                         $(".imgPic").html(tempArr[i].goodsPrice + '/次');
                         $(".imgBtn").attr("name", tempArr[i].id);
                         $(".imgBtn").attr("data", JSON.stringify(tempArr[i]));
+                        $(".imgBtn").attr("pic", tempArr[i].goodsPrice);
                     } else if (tempArr[i].goodsType == "GOODS_INQUIRY_PHONE") {
                         $(".telPic").html(tempArr[i].goodsPrice + '/次');
                         $(".telBtn").attr("name", tempArr[i].id);
-                        $(".imgBtn").attr("data", JSON.stringify(tempArr[i]));
+                        $(".telBtn").attr("data", JSON.stringify(tempArr[i]));
+                        $(".telBtn").attr("pic", tempArr[i].goodsPrice);
                     } else if (tempArr[i].goodsType == "GOODS_INQUIRY_VIDEO") {
                         $(".videoPic").html(tempArr[i].goodsPrice + '/次');
                         $(".videoBtn").attr("name", tempArr[i].id);
-                        $(".imgBtn").attr("data", JSON.stringify(tempArr[i]));
+                        $(".videoBtn").attr("data", JSON.stringify(tempArr[i]));
+                        $(".videoBtn").attr("pic", tempArr[i].goodsPrice);
                     }
                 }
             } else {
@@ -147,7 +150,7 @@ $(function () {
     // 加关注 、 取消关注  -  end
 
     $(".imgBtn").click(function () {
-        $(".imgPicAffirm").html($(".imgBtn").attr("data").goodsPrice);
+        $(".imgPicAffirm").html($(".imgBtn").attr("pic"));
         layer.open({
             title: '',
             type: 1,
