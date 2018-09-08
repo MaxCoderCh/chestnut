@@ -27,6 +27,14 @@ $(function () {
     var imgUrlArr = [];
     // 文件 处理 - start
     $(".fileInput").change(function () {
+        layer.open({
+            title: '',
+            type: 1,
+            content: $('.loadingContainer'),
+            closeBtn: false,
+            shadeClose: false,
+            skin: 'noBackground',
+        });
         var newFileArr = [];
         var uploadFile = $(this)[0].files; // 某一块添加时的原始数据
         var fileLength = 0;
@@ -80,6 +88,8 @@ $(function () {
                         success: function (data) {
                             console.log(data)
                             if (data.code == 20000) {
+                                layer.closeAll();
+                                $(".loadingContainer").hide();
                                 var tempArr = data.result;
                                 imgUrlArr = imgUrlArr.concat(tempArr);
                                 var _html = '';

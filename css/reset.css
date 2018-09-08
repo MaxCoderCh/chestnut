@@ -118,3 +118,8 @@ input::-webkit-input-placeholder {
 input::-moz-placeholder {
     color: #cccccc;
 }
+/* layer 背景清除 */
+body .noBackground {
+    box-shadow: none;
+    background: none;
+}

@@ -13,6 +13,14 @@ $(function () {
     }
     // 获取身份证图片路径 - start
     $(".fileBtn").change(function () {
+        layer.open({
+            title: '',
+            type: 1,
+            content: $('.loadingContainer'),
+            closeBtn: false,
+            shadeClose: false,
+            skin: 'noBackground',
+        });
         var postData = new FormData();
         postData.append("recordType", "person-card");
         postData.append("file", $(this)[0].files[0]);
@@ -48,6 +56,8 @@ $(function () {
                         dataType: 'json',
                         success: function (data) {
                             console.log(data)
+                            layer.closeAll();
+                            $(".loadingContainer").hide();
                             if (data.code == 20000) {
                                 userInfo = data.result;
                                 $(".doctorName").html(data.result.patientName);
