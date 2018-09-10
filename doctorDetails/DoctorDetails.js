@@ -19,7 +19,13 @@ $(function () {
                 $(".titleName").html(data.result.titleName);//职称
                 $(".hospitalName").html(data.result.hospitalName);//医院名
                 $(".goodAt").html(data.result.doctorStrong);//擅长
+                if (data.result.doctorStrong.length < 50) {
+                    $(".goodAtFoldBtn").hide();
+                }
                 $(".resume").html(data.result.doctorResume);//简介
+                if (data.result.doctorResume.length < 50) {
+                    $(".resumeFoldBtn").hide();
+                }
                 $(".fansCount").html(data.result.fansCount);//关注量
                 $(".hitsCount").html(data.result.hitsCount);//点击量
                 $(".patientCount").html(data.result.patientCount);// 帮助患者量
