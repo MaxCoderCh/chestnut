@@ -1,5 +1,4 @@
 $(function () {
-
     // 自测评估
     $('.assess').click(function () {
         // 判断用户信息

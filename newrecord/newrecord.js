@@ -1,7 +1,7 @@
 $(function () {
     $.ajax({
         headers: {
-            token:myLocal.getItem("token"),
+            token: myLocal.getItem("token"),
         },
         type: 'GET',
         url: IP + '/api-record/patientAnamnesis/selete',
@@ -25,7 +25,7 @@ $(function () {
     function deleteIllness(obj, id) {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-record/anamnesis/delete',
@@ -193,7 +193,7 @@ $(function () {
     $('.drugAllergy').on('input', function (e) {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-stata/anamnesisAllergyDrug/search',
@@ -259,7 +259,7 @@ $(function () {
     $('.illnessInput').on('input', function (e) {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-stata/anamnesisIllness/search',
@@ -319,7 +319,7 @@ $(function () {
     $('.surgeryInput').on('input', function (e) {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-stata/surgicalHistory/search',
@@ -378,7 +378,7 @@ $(function () {
     $('.eatingDrugInput').on('input', function (e) {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-stata/anamnesisEatingDrug/search',
@@ -460,7 +460,7 @@ $(function () {
             if (myLocal.getItem('userInfo') && myLocal.getItem('userInfo').id) {
                 $.ajax({
                     headers: {
-                        token:myLocal.getItem("token"),
+                        token: myLocal.getItem("token"),
                     },
                     type: 'POST',
                     url: IP + '/api-record/patientAnamnesis/update',
@@ -484,8 +484,12 @@ $(function () {
                     success: function (data) {
                         console.log(data)
                         if (data.code == 20000) {
-                            history.go(-1);
-                            // window.location.href = document.referrer;
+                            myLocal.setItem("userInfo", {
+                                "patientName": $('.patientName').val(),
+                                "patientCard": $('.patientCard').val(),
+                                "patientAge": $('.age').val(),
+                            })
+                            history.back(-1);
                         } else {
 
                         }
@@ -497,13 +501,12 @@ $(function () {
             } else {
                 $.ajax({
                     headers: {
-                        token:myLocal.getItem("token"),
+                        token: myLocal.getItem("token"),
                     },
                     type: 'POST',
                     url: IP + '/api-record/patientAnamnesis/weChatAdd',
                     dataType: 'json',
                     data: {
-                        // "patientId": myLocal.getItem('userInfo').id,
                         "patientName": $('.patientName').val(),
                         "patientCard": $('.patientCard').val(),
                         "patientPhone": $('.patientPhone').val(),
@@ -521,8 +524,12 @@ $(function () {
                     success: function (data) {
                         console.log(data)
                         if (data.code == 20000) {
-                            history.go(-1);
-                            // window.location.href = document.referrer;
+                            myLocal.setItem("userInfo", {
+                                "patientName": $('.patientName').val(),
+                                "patientCard": $('.patientCard').val(),
+                                "patientAge": $('.age').val(),
+                            })
+                            history.back(-1);
                         } else {
 
                         }
