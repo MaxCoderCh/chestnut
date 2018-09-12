@@ -1,4 +1,70 @@
 $(function () {
+    // 修复iphone拍摄图片旋转方向
+    function exit(file) {
+        return new Promise(function (resolve, reject) {
+            // 按顺时针旋转
+            EXIF.getData(file, function () {
+                // 手机旋转角度      返回值     图片旋转的角度
+                // iphone 垂直拍摄照片 6 图片默认旋转270deg(即向左旋转90deg)    
+                // iphone 90deg拍摄照片 3 图片默认旋转180deg(倒置)    
+                // iphone 180deg拍摄照片 8 图片默认旋转90deg(即向右旋转90deg)    
+                // iphone 270deg拍摄照片 1 图片正常    
+                // 获取旋转角度 Orientation
+                var Orientation = EXIF.getTag(this, 'Orientation');
+                // FileReader 对象 获取file对象的base64资源
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    if (e.target.result) {
+                        if (Orientation) {
+                            // 创建 Image 对象
+                            var img = new Image();
+                            img.src = e.target.result;
+                            img.onload = function () {
+                                // 获取图片 宽、高
+                                var width = img.width;
+                                var height = img.height;
+                                // 创建 canvas 对象 宽高和图像宽高相同
+                                var canvas = document.createElement("canvas");
+                                var ctx = canvas.getContext("2d");
+                                // drawImage(图片对象,x坐标起始点,y坐标起始点)
+                                switch (Number(Orientation)) {
+                                    case 1:
+                                        // canvas 宽高 和 图片宽高相同
+                                        canvas.width = width;
+                                        canvas.height = height;
+                                        ctx.drawImage(img, 0, 0);
+                                        break;
+                                    case 3:
+                                        canvas.width = height;
+                                        canvas.height = width;
+                                        ctx.rotate(3 * Math.PI);
+                                        ctx.drawImage(img, -width, -height);
+                                        break;
+                                    case 6:
+                                        canvas.width = height;
+                                        canvas.height = width;
+                                        ctx.rotate(-1.5 * Math.PI);
+                                        ctx.drawImage(img, 0, -height);
+                                        break;
+                                    case 8:
+                                        canvas.width = height;
+                                        canvas.height = width;
+                                        ctx.rotate(1.5 * Math.PI);
+                                        ctx.drawImage(img, -width, 0);
+                                        break;
+                                }
+                                var newBase64 = canvas.toDataURL("image/jpeg", 0.92);
+                                resolve(dataURLtoFile(newBase64, file.name))
+                            }
+                        } else {
+                            resolve(dataURLtoFile(e.target.result, file.name))
+                        }
+                    }
+                }
+            });
+        })
+    }
     // 图片压缩 ES6 canvas
     function reduceImg(base64) {
         return new Promise(function (resolve, reject) {
@@ -131,48 +197,51 @@ $(function () {
         });
         var files = $(this)[0].files;// 选择的图片资源 
         for (var i = 0; i < files.length; i++) {
-            reduceFile(files[i]).then(function (newFile) {
-                var postData = new FormData();
-                postData.append("recordType", "patient-record");
-                postData.append("files", newFile);
-                $.ajax({
-                    headers: {
-                        token: myLocal.getItem("token"),
-                    },
-                    type: 'POST',
-                    url: IP + '/api-third/cos/uploads',
-                    xhrFields: {
-                        withCredentials: true,
-                    },
-                    crossDomain: true,
-                    processData: false,
-                    contentType: false,
-                    data: postData,
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data)
-                        layer.closeAll();
-                        $(".loadingContainer").hide();
-                        if (data.code == 20000) {
-                            var tempArr = data.result;
-                            imgUrlArr = imgUrlArr.concat(tempArr);
-                            var _html = '';
-                            for (var i = 0; i < tempArr.length; i++) {
-                                _html += '<li class="imgItem" url="' + tempArr[i] + '">\
-                                <img class="photo" src="'+ tempArr[i] + '" alt="">\
-                                <img class="deleteImg" src="../images/delete.png" alt="">\
-                            </li>'
-                            };
-                            $(".imgList").append(_html)
-                        } else {
+            exit(files[i]).then(function (file) {
+                reduceFile(file).then(function (newFile) {
+                    var postData = new FormData();
+                    postData.append("recordType", "patient-record");
+                    postData.append("files", newFile);
+                    $.ajax({
+                        headers: {
+                            token: myLocal.getItem("token"),
+                        },
+                        type: 'POST',
+                        url: IP + '/api-third/cos/uploads',
+                        xhrFields: {
+                            withCredentials: true,
+                        },
+                        crossDomain: true,
+                        processData: false,
+                        contentType: false,
+                        data: postData,
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data)
+                            layer.closeAll();
+                            $(".loadingContainer").hide();
+                            if (data.code == 20000) {
+                                var tempArr = data.result;
+                                imgUrlArr = imgUrlArr.concat(tempArr);
+                                var _html = '';
+                                for (var i = 0; i < tempArr.length; i++) {
+                                    _html += '<li class="imgItem" url="' + tempArr[i] + '">\
+                                    <img class="photo" src="'+ tempArr[i] + '" alt="">\
+                                    <img class="deleteImg" src="../images/delete.png" alt="">\
+                                </li>'
+                                };
+                                $(".imgList").append(_html)
+                            } else {
 
-                        }
-                    },
-                    error: function (err) {
-                        console.log(err);
-                    },
+                            }
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        },
+                    })
                 })
             })
+
         }
     })
 
