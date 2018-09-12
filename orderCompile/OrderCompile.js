@@ -72,8 +72,8 @@ $(function () {
             }
         })
     }
-
     // 获取订单详情-start
+    var imgUrlArr = [];// 所有图片url数组
     var orderId = myLocal.getItem("orderId");
     var patientInfo = null;// 患者信息
     var doctorDetails = null;// 医生信息
@@ -142,11 +142,11 @@ $(function () {
                     success: function (data) {
                         console.log(data)
                         if (data.code == 20000) {
-                            var imgUrls = data.result;
+                            imgUrlArr = data.result;
                             var _html = '';
-                            for (var i = 0; i < imgUrls.length; i++) {
-                                _html += '<li class="imgItem" url="' + imgUrls[i] + '">\
-                                <img class="photo" src="'+ imgUrls[i] + '" alt="">\
+                            for (var i = 0; i < imgUrlArr.length; i++) {
+                                _html += '<li class="imgItem" url="' + imgUrlArr[i] + '">\
+                                <img class="photo" src="'+ imgUrlArr[i] + '" alt="">\
                                 <img class="deleteImg" src="../images/delete.png" alt="">\
                             </li>'
                             }
@@ -198,8 +198,28 @@ $(function () {
     }
     myLocal.getItem("patientInfo") && getBaseInfoById(myLocal.getItem("patientInfo").id);
 
+    if (myLocal.getItem("draftOrder")) {
+        var draftOrder = myLocal.getItem("draftOrder");
+        myLocal.deleteItem("draftOrder");
+        $(".orderDescription").val(draftOrder.orderDescription);
+        imgUrlArr = draftOrder.imgUrlArr;
+        var _tempHtml = '';
+        for (var i = 0; i < imgUrlArr.length; i++) {
+            _tempHtml += '<li class="imgItem" url="' + imgUrlArr[i] + '">\
+                <img class="photo" src="'+ imgUrlArr[i] + '" alt="">\
+                <img class="deleteImg" src="../images/delete.png" alt="">\
+            </li>'
+        };
+        $(".imgList").html(_tempHtml);
+    }
+
     // 选择患者
     $(".selectBtn").click(function () {
+        // 保存填写的其他内容
+        myLocal.setItem("draftOrder", {
+            orderDescription: $(".orderDescription").val(),
+            imgUrlArr: imgUrlArr,
+        })
         window.location = '/chestnut/selectPatients/SelectPatients.html';
     })
 
@@ -215,7 +235,6 @@ $(function () {
         });
     })
 
-    var imgUrlArr = [];
     // 文件 处理 - start
     $(".fileInput").change(function () {
         layer.open({
@@ -321,6 +340,7 @@ $(function () {
         } else if (tempImgUrls.length <= 0) {
             layer.msg("请上传图片")
         } else {
+            myLocal.deleteItem("draftOrder");
             $.ajax({
                 headers: {
                     token: myLocal.getItem("token"),

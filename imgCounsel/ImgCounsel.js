@@ -72,12 +72,29 @@ $(function () {
             }
         })
     }
-
+    // 所有图片url数组
+    var imgUrlArr = [];
     var goodsInfo = myLocal.getItem("goodsInfo");
     if (myLocal.getItem("patientInfo")) {
         var patientInfo = myLocal.getItem("patientInfo");
         myLocal.deleteItem("patientInfo");
         $(".selectBtnText").html(patientInfo.patientName ? patientInfo.patientName : '点击选择就诊人');
+    }
+
+    if (myLocal.getItem("draftOrder")) {
+        var draftOrder = myLocal.getItem("draftOrder");
+
+        myLocal.deleteItem("draftOrder");
+        $(".orderDescription").val(draftOrder.orderDescription);
+        imgUrlArr = draftOrder.imgUrlArr;
+        var _tempHtml = '';
+        for (var i = 0; i < imgUrlArr.length; i++) {
+            _tempHtml += '<li class="imgItem" url="' + imgUrlArr[i] + '">\
+                <img class="photo" src="'+ imgUrlArr[i] + '" alt="">\
+                <img class="deleteImg" src="../images/delete.png" alt="">\
+            </li>'
+        };
+        $(".imgList").html(_tempHtml);
     }
 
 
@@ -90,14 +107,18 @@ $(function () {
     $(".hearImg").attr("src", doctorDetails.headImg ? doctorDetails.headImg : "../images/defaultHear.png");// 头像
     // 获取医生信息 - end
 
+
+
     // 选择患者-start
     $(".selectBtn").click(function () {
+        myLocal.setItem("draftOrder", {
+            orderDescription: $(".orderDescription").val(),
+            imgUrlArr: imgUrlArr,
+        })
         window.location = '/chestnut/selectPatients/SelectPatients.html';
     })
     // 选择患者-end
 
-    // 所有图片url数组
-    var imgUrlArr = [];
     // 文件 处理 - start
     $(".fileInput").change(function () {
         layer.open({
@@ -202,11 +223,14 @@ $(function () {
 
     // 订单发送事件 - start
     $(".submitBtn").click(function () {
-        if (!$(".orderDescription").val()) {
+        if (!patientInfo || !patientInfo.id) {
+            layer.msg("请选择就诊人")
+        } else if (!$(".orderDescription").val()) {
             layer.msg("请输入问题描述")
         } else if (imgUrlArr.length <= 0) {
             layer.msg("请上传图片")
         } else {
+            myLocal.deleteItem("draftOrder");
             $.ajax({
                 headers: {
                     token: myLocal.getItem("token"),
