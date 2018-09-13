@@ -196,6 +196,11 @@ $(function () {
             skin: 'noBackground',
         });
         var files = $(this)[0].files;// 选择的图片资源 
+        if (files.length <= 0) {
+            layer.closeAll();
+            $('.loadingContainer').hide();
+            return;
+        }
         for (var i = 0; i < files.length; i++) {
             exit(files[i]).then(function (file) {
                 reduceFile(file).then(function (newFile) {
