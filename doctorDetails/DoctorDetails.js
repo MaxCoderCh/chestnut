@@ -30,6 +30,7 @@ $(function () {
                 $(".hitsCount").html(data.result.hitsCount);//点击量
                 $(".patientCount").html(data.result.patientCount);// 帮助患者量
                 $(".focusBtn").attr("name", data.result.id)// id
+                $(".hearImg").attr("src", data.result.headImg)// 头像
                 if (data.result.areFans) {
                     // 已关注
                     $(".focusBtn").addClass("focusTrue").html("已关注");
