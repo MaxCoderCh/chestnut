@@ -36,8 +36,8 @@ $(function () {
                                         ctx.drawImage(img, 0, 0);
                                         break;
                                     case 3:
-                                        canvas.width = height;
-                                        canvas.height = width;
+                                        canvas.width = width;
+                                        canvas.height = height;
                                         ctx.rotate(3 * Math.PI);
                                         ctx.drawImage(img, -width, -height);
                                         break;
