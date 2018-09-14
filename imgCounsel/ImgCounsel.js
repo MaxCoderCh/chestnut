@@ -177,9 +177,13 @@ $(function () {
 
     // 选择患者-start
     $(".selectBtn").click(function () {
+        var urls = [];
+        for (var i = 0; i < $(".imgList .imgItem").length; i++) {
+            urls.push($(".imgList .imgItem").eq(i).attr("url"))
+        }
         myLocal.setItem("draftOrder", {
             orderDescription: $(".orderDescription").val(),
-            imgUrlArr: imgUrlArr,
+            imgUrlArr: urls,
         })
         window.location = '/chestnut/selectPatients/SelectPatients.html';
     })
@@ -256,7 +260,6 @@ $(function () {
         for (var i = 0; i < $(".imgList .imgItem").length; i++) {
             urls.push($(".imgList .imgItem").eq(i).attr("url"))
         }
-        console.log(urls)
         wx.previewImage({
             current: $(this).attr('url'), // 当前显示图片的http链接
             urls: urls, // 需要预览的图片http链接列表
@@ -301,9 +304,19 @@ $(function () {
             layer.msg("请选择就诊人")
         } else if (!$(".orderDescription").val()) {
             layer.msg("请输入问题描述")
+        } else if ($(".orderDescription").val().length > 1000) {
+            layer.msg("问题描述过长")
         } else if (imgUrlArr.length <= 0) {
             layer.msg("请上传图片")
         } else {
+            layer.open({
+                title: '',
+                type: 1,
+                content: $('.loadingContainer'),
+                closeBtn: false,
+                shadeClose: false,
+                skin: 'noBackground',
+            });
             myLocal.deleteItem("draftOrder");
             $.ajax({
                 headers: {
@@ -345,11 +358,10 @@ $(function () {
                             dataType: 'json',
                             success: function (data) {
                                 console.log(data)
+                                layer.closeAll();
+                                $('.loadingContainer').hide();
                                 if (data.code == 20000) {
-                                    layer.msg('发送成功');
-                                    setTimeout(function () {
-                                        window.location = '/chestnut/weChatPay/WeChatPay.html?' + data.result;
-                                    }, 1500)
+                                    window.location = '/chestnut/weChatPay/WeChatPay.html?' + data.result;
                                 } else {
                                     layer.msg('发送失败');
                                 }

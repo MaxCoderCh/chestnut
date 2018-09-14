@@ -282,9 +282,13 @@ $(function () {
     // 选择患者
     $(".selectBtn").click(function () {
         // 保存填写的其他内容
+        var urls = [];
+        for (var i = 0; i < $(".imgList .imgItem").length; i++) {
+            urls.push($(".imgList .imgItem").eq(i).attr("url"))
+        }
         myLocal.setItem("draftOrder", {
             orderDescription: $(".orderDescription").val(),
-            imgUrlArr: imgUrlArr,
+            imgUrlArr: urls,
         })
         window.location = '/chestnut/selectPatients/SelectPatients.html';
     })
@@ -410,9 +414,19 @@ $(function () {
         }
         if (!$(".orderDescription").val()) {
             layer.msg("请输入问题描述")
+        } else if ($(".orderDescription").val() >= 1000) {
+            layer.msg("问题描述过长")
         } else if (tempImgUrls.length <= 0) {
             layer.msg("请上传图片")
         } else {
+            layer.open({
+                title: '',
+                type: 1,
+                content: $('.loadingContainer'),
+                closeBtn: false,
+                shadeClose: false,
+                skin: 'noBackground',
+            });
             myLocal.deleteItem("draftOrder");
             $.ajax({
                 headers: {
@@ -456,6 +470,8 @@ $(function () {
                             dataType: 'json',
                             success: function (data) {
                                 console.log(data)
+                                layer.closeAll();
+                                $('.loadingContainer').hide();
                                 if (data.code == 20000) {
                                     window.location = '/chestnut/weChatPay/WeChatPay.html?' + data.result;
                                 } else {
