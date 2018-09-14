@@ -90,6 +90,7 @@ $(function () {
     // 折叠 - start
     $(".foldBtn").click(function () {
         $(this).toggleClass("foldTrue");
+        $(this).siblings(".value").toggleClass("foldText");
     })
     // 折叠 - end
 
