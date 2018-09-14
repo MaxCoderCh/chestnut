@@ -181,6 +181,7 @@ $(function () {
                             $(".titleName").html(data.result.titleName);// 职称
                             $(".hospitalName").html(data.result.hospitalName);// 医院名
                             $(".goodAtValue").html(data.result.doctorStrong);// 擅长
+                            $(".hearImg").attr("src", data.result.headImg);// 头像
                         } else {
                             layer.msg("信息加载失败");
                         }
