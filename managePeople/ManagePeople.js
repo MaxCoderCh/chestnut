@@ -64,12 +64,12 @@ $(function () {
             },
         })
     }
-    var userInfo = {};// 当前操作的信息
+    var patientInfo = {};// 当前操作的信息
     var obj = null;
     // 就诊人编辑事件 - start
     $(".peopleList").delegate('.compileBtn', 'click', function () {
-        userInfo = eval("(" + $(this).parents(".peopleItem").attr("name") + ")");
-        myLocal.setItem("userInfo", userInfo);
+        patientInfo = eval("(" + $(this).parents(".peopleItem").attr("name") + ")");
+        myLocal.setItem("patientInfo", patientInfo);
         window.location = '/chestnut/addPeople/AddPeople.html';
     })
     // 就诊人编辑事件 - end
@@ -84,8 +84,8 @@ $(function () {
             shadeClose: false,
         });
         obj = $(this).parents(".peopleItem");
-        userInfo = eval("(" + $(this).parents(".peopleItem").attr("name") + ")");
-        $(".objName").html(userInfo.patientName);
+        patientInfo = eval("(" + $(this).parents(".peopleItem").attr("name") + ")");
+        $(".objName").html(patientInfo.patientName);
     })
     $(".confirmContent").find(".noBtn").click(function () {
         layer.closeAll();
@@ -94,12 +94,12 @@ $(function () {
     $(".confirmContent").find(".yesBtn").click(function () {
         $.ajax({
             headers: {
-                token:myLocal.getItem("token"),
+                token: myLocal.getItem("token"),
             },
             type: 'POST',
             url: IP + '/api-record/userPatient/remove',
             data: {
-                "patientId": userInfo.id,
+                "patientId": patientInfo.id,
             },
             dataType: 'json',
             success: function (data) {
@@ -124,7 +124,7 @@ $(function () {
 
     // 添加就诊人 按钮 - start
     $(".addPeopleBtn,.addPersonBtn").click(function () {
-        myLocal.deleteItem("userInfo");
+        myLocal.deleteItem("patientInfo");
         window.location = "/chestnut/addPeople/AddPeople.html";
     })
     // 添加就诊人 按钮 - end

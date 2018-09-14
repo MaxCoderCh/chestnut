@@ -77,13 +77,51 @@ $(function () {
         var form = layui.form;
         form.render();
     });
-    var userInfo = null;
+    var patientInfo = null;
     var flag = true;// 是否是新建的
-    if (!flag) {
-        $(".fileBtn").click(function () {
+    var drugAllergyArr = [];
+    var illnessAddArr = [];
+    var surgeryAddArr = [];
+    var eatingDrugAddArr = [];
+
+    $(".fileBtn").click(function () {
+        if (!flag) {
             layer.msg("不能修改");
             return false;
-        })
+        }
+    })
+    // 根据患者id获取患者信息
+    function getPatientById(patientId) {
+        $.ajax({
+            headers: {
+                token: myLocal.getItem("token"),
+            },
+            type: 'GET',
+            url: IP + '/api-record/patientAnamnesis/getPatientById?patientId=' + patientId,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                console.log(data)
+                if (data.code == '20000') {
+                    patientInfo = data.result;
+                    myLocal.setItem("patientInfo", data.result);
+                    $(".doctorName").html(data.result.patientName);
+                    $(".sex").html(data.result.patientSex);
+                    $(".age").html(data.result.patientAge + '岁');
+                    $(".idNumber").html(data.result.patientCard);
+                    $(".patientSource").val(data.result.patientSource);
+                    layui.use('form', function () {
+                        var form = layui.form;
+                        form.render();
+                    });
+                    // 渲染疾病信息
+                    renderIllness();
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            },
+        });
     }
     // 获取身份证图片路径 - start
     $(".fileBtn").change(function () {
@@ -134,11 +172,13 @@ $(function () {
                                 layer.closeAll();
                                 $(".loadingContainer").hide();
                                 if (data.code == 20000) {
-                                    userInfo = data.result;
+                                    patientInfo = data.result;
                                     $(".doctorName").html(data.result.patientName);
                                     $(".sex").html(data.result.patientSex);
                                     $(".age").html(data.result.patientAge + '岁');
                                     $(".idNumber").html(data.result.patientCard);
+                                    // 通过id查患者详情
+                                    getPatientById(patientInfo.id);
                                 } else if (data.code == '50000') {
                                     layer.msg('图片识别失败');
                                 } else {
@@ -159,43 +199,10 @@ $(function () {
             })
         })
     })
-
-
     // 获取身份证图片路径 - end
-    if (myLocal.getItem('userInfo')) {
-        $.ajax({
-            headers: {
-                token: myLocal.getItem("token"),
-            },
-            type: 'GET',
-            url: IP + '/api-record/patientAnamnesis/getPatientById?patientId=' + myLocal.getItem("userInfo").id,
-            dataType: 'json',
-            async: false,
-            success: function (data) {
-                console.log(data)
-                if (data.code == '20000') {
-                    flag = false;
-                    myLocal.setItem("userInfo", data.result);
-                    userInfo = data.result;
-                    $(".doctorName").html(data.result.patientName);
-                    $(".sex").html(data.result.patientSex);
-                    $(".age").html(data.result.patientAge + '岁');
-                    $(".idNumber").html(data.result.patientCard);
-                    $(".patientSource").val(data.result.patientSource);
-                    layui.use('form', function () {
-                        var form = layui.form;
-                        form.render();
-                    });
-                } else if (data.code == '40004') {
-                    myLocal.deleteItem("userInfo", data.result)
-                } else {
-                    myLocal.setItem("userInfo", data.result);
-                }
-            },
-            error: function (err) {
-                console.log(err)
-            },
-        });
+    if (myLocal.getItem('patientInfo')) {
+        flag = false;
+        getPatientById(myLocal.getItem("patientInfo").id);
     }
 
 
@@ -213,6 +220,7 @@ $(function () {
             dataType: 'json',
             data: {
                 "id": id,
+                "patientId": patientInfo.id,
             },
             success: function (data) {
                 console.log(data)
@@ -227,6 +235,7 @@ $(function () {
             },
         })
     }
+
 
     // 输入框焦点效果切换
     $('.illnessSearch').focus(function () {
@@ -266,17 +275,6 @@ $(function () {
             },
         });
     })
-
-    // 添加过敏病
-    var drugAllergyArr = [];
-    var drugAllergyTemp = myLocal.getItem('userInfo') && myLocal.getItem('userInfo').anamnesisAllergyDrugList ? myLocal.getItem('userInfo').anamnesisAllergyDrugList : [];
-    drugAllergyTemp.length > 0 ? $('.drugAllergyUl').css("display", 'flex') : null;
-    var _drugAllergyHtml = '';
-    for (var i = 0; i < drugAllergyTemp.length; i++) {
-        drugAllergyArr.push(drugAllergyTemp[i].orderId);
-        _drugAllergyHtml += '<li class="selectItem" type="old" orderId="' + drugAllergyTemp[i].orderId + '" name="' + drugAllergyTemp[i].id + '">' + drugAllergyTemp[i].anamnesisRemark + '</li>';
-    };
-    $('.drugAllergyUl').html(_drugAllergyHtml);
     $(".drugAllergyAdd").delegate("li", "click", function () {
         if (drugAllergyArr.indexOf($(this).attr('name')) == -1) {
             $('.drugAllergyUl').css("display", 'flex');
@@ -330,15 +328,6 @@ $(function () {
             },
         });
     })
-    var illnessAddArr = [];
-    var illnessTemp = myLocal.getItem('userInfo') && myLocal.getItem('userInfo').anamnesisIllnessList ? myLocal.getItem('userInfo').anamnesisIllnessList : [];
-    illnessTemp.length > 0 ? $('.illnessUl').css("display", 'flex') : null;
-    var _illnessHtml = '';
-    for (var i = 0; i < illnessTemp.length; i++) {
-        illnessAddArr.push(illnessTemp[i].orderId);
-        _illnessHtml += '<li class="selectItem" type="old" orderId="' + illnessTemp[i].orderId + '" name="' + illnessTemp[i].id + '">' + illnessTemp[i].anamnesisRemark + '</li>';
-    };
-    $(".illnessUl").html(_illnessHtml);
     $(".illnessAdd").delegate("li", "click", function () {
         if (illnessAddArr.indexOf($(this).attr('name')) == -1) {
             $(".illnessUl").css('display', 'flex');
@@ -349,6 +338,7 @@ $(function () {
         }
     });
     $('.illnessUl').delegate('li', "click", function () {
+        console.log(illnessAddArr.length)
         if ($(this).attr('type') == 'old') {
             deleteIllness($(this), $(this).attr('name'));
         } else {
@@ -358,7 +348,6 @@ $(function () {
         if (illnessAddArr.length <= 0) {
             $('.illnessUl').hide();
         }
-
     })
     // 手术病
     $('.surgeryInput').on('input', function (e) {
@@ -390,15 +379,6 @@ $(function () {
             },
         });
     });
-    var surgeryAddArr = [];
-    var surgeryTemp = myLocal.getItem('userInfo') && myLocal.getItem('userInfo').anamnesisSurgicalHistoryList ? myLocal.getItem('userInfo').anamnesisSurgicalHistoryList : [];
-    surgeryTemp.length > 0 ? $('.surgeryUl').css("display", 'flex') : null;
-    var _surgeryHtml = '';
-    for (var i = 0; i < surgeryTemp.length; i++) {
-        surgeryAddArr.push(surgeryTemp[i].orderId);
-        _surgeryHtml += '<li class="selectItem" type="old" orderId="' + surgeryTemp[i].orderId + '" name="' + surgeryTemp[i].id + '">' + surgeryTemp[i].anamnesisRemark + '</li>';
-    };
-    $(".surgeryUl").html(_surgeryHtml);
     $(".surgeryAdd").delegate("li", "click", function () {
         if (surgeryAddArr.indexOf($(this).attr('name')) == -1) {
             $(".surgeryUl").css('display', 'flex');
@@ -449,15 +429,6 @@ $(function () {
             },
         });
     })
-    var eatingDrugAddArr = [];
-    var eatingDrugTemp = myLocal.getItem('userInfo') && myLocal.getItem('userInfo').anamnesisEatingDrugList ? myLocal.getItem('userInfo').anamnesisEatingDrugList : [];
-    eatingDrugTemp.length > 0 ? $('.eatingDrugUl').css("display", 'flex') : null;
-    var _eatingDrugHtml = '';
-    for (var i = 0; i < eatingDrugTemp.length; i++) {
-        eatingDrugAddArr.push(eatingDrugTemp[i].orderId);
-        _eatingDrugHtml += '<li class="selectItem" type="old" orderId="' + eatingDrugTemp[i].orderId + '" name="' + eatingDrugTemp[i].id + '">' + eatingDrugTemp[i].anamnesisRemark + '</li>';
-    };
-    $(".eatingDrugUl").html(_eatingDrugHtml);
     $(".eatingDrugAdd").delegate("li", "click", function () {
         if (eatingDrugAddArr.indexOf($(this).attr('name')) == -1) {
             $('.eatingDrugUl').css('display', 'flex');
@@ -478,11 +449,56 @@ $(function () {
             $('.eatingDrugUl').hide();
         }
     })
+    // 渲染疾病信息
+    function renderIllness() {
+        // 添加过敏病
+        drugAllergyArr = [];
+        var drugAllergyTemp = myLocal.getItem('patientInfo') && myLocal.getItem('patientInfo').anamnesisAllergyDrugList ? myLocal.getItem('patientInfo').anamnesisAllergyDrugList : [];
+        drugAllergyTemp.length > 0 ? $('.drugAllergyUl').css("display", 'flex') : null;
+        var _drugAllergyHtml = '';
+        for (var i = 0; i < drugAllergyTemp.length; i++) {
+            drugAllergyArr.push(drugAllergyTemp[i].orderId);
+            _drugAllergyHtml += '<li class="selectItem" type="old" orderId="' + drugAllergyTemp[i].orderId + '" name="' + drugAllergyTemp[i].id + '">' + drugAllergyTemp[i].anamnesisRemark + '</li>';
+        };
+        $('.drugAllergyUl').html(_drugAllergyHtml);
+
+        illnessAddArr = [];
+        var illnessTemp = myLocal.getItem('patientInfo') && myLocal.getItem('patientInfo').anamnesisIllnessList ? myLocal.getItem('patientInfo').anamnesisIllnessList : [];
+        illnessTemp.length > 0 ? $('.illnessUl').css("display", 'flex') : null;
+        var _illnessHtml = '';
+        for (var i = 0; i < illnessTemp.length; i++) {
+            illnessAddArr.push(illnessTemp[i].orderId);
+            _illnessHtml += '<li class="selectItem" type="old" orderId="' + illnessTemp[i].orderId + '" name="' + illnessTemp[i].id + '">' + illnessTemp[i].anamnesisRemark + '</li>';
+        };
+        $(".illnessUl").html(_illnessHtml);
+
+        surgeryAddArr = [];
+        var surgeryTemp = myLocal.getItem('patientInfo') && myLocal.getItem('patientInfo').anamnesisSurgicalHistoryList ? myLocal.getItem('patientInfo').anamnesisSurgicalHistoryList : [];
+        surgeryTemp.length > 0 ? $('.surgeryUl').css("display", 'flex') : null;
+        var _surgeryHtml = '';
+        for (var i = 0; i < surgeryTemp.length; i++) {
+            surgeryAddArr.push(surgeryTemp[i].orderId);
+            _surgeryHtml += '<li class="selectItem" type="old" orderId="' + surgeryTemp[i].orderId + '" name="' + surgeryTemp[i].id + '">' + surgeryTemp[i].anamnesisRemark + '</li>';
+        };
+        $(".surgeryUl").html(_surgeryHtml);
+
+        eatingDrugAddArr = [];
+        var eatingDrugTemp = myLocal.getItem('patientInfo') && myLocal.getItem('patientInfo').anamnesisEatingDrugList ? myLocal.getItem('patientInfo').anamnesisEatingDrugList : [];
+        eatingDrugTemp.length > 0 ? $('.eatingDrugUl').css("display", 'flex') : null;
+        var _eatingDrugHtml = '';
+        for (var i = 0; i < eatingDrugTemp.length; i++) {
+            eatingDrugAddArr.push(eatingDrugTemp[i].orderId);
+            _eatingDrugHtml += '<li class="selectItem" type="old" orderId="' + eatingDrugTemp[i].orderId + '" name="' + eatingDrugTemp[i].id + '">' + eatingDrugTemp[i].anamnesisRemark + '</li>';
+        };
+        $(".eatingDrugUl").html(_eatingDrugHtml);
+    }
+
+
 
     // 配偶 子女 父母 自己 其他
     $(".submitBtn").click(function () {
         // 添加就诊人
-        if (!userInfo) {
+        if (!patientInfo) {
             layer.msg("请先上传身份证");
         } else {
             if (flag) {
@@ -498,7 +514,7 @@ $(function () {
                         withCredentials: true,
                     },
                     data: {
-                        "patientId": userInfo.id,
+                        "patientId": patientInfo.id,
                         "anamnesisAllergyDrugIds": drugAllergyArr.toString(),//过敏药物ID数组
                         "anamnesisIllnessIds": illnessAddArr.toString(),//病史疾病ID
                         "anamnesisEatingDrugIds": eatingDrugAddArr.toString(),//正在服用药物ID数组
@@ -509,7 +525,7 @@ $(function () {
                     success: function (data) {
                         console.log(data)
                         if (data.code == 20000) {
-                            window.history.back();
+                            window.location.href = document.referrer;
                         } else if (data.code == '50000') {
 
                         } else {
@@ -533,7 +549,7 @@ $(function () {
                         withCredentials: true,
                     },
                     data: {
-                        "patientId": userInfo.id,
+                        "patientId": patientInfo.id,
                         "anamnesisAllergyDrugIds": drugAllergyArr.toString(),//过敏药物ID数组
                         "anamnesisIllnessIds": illnessAddArr.toString(),//病史疾病ID
                         "anamnesisEatingDrugIds": eatingDrugAddArr.toString(),//正在服用药物ID数组
@@ -545,7 +561,7 @@ $(function () {
                         if (data.code == 20000) {
                             layer.msg("修改成功");
                             setTimeout(function () {
-                                window.history.back();
+                                window.location.href = document.referrer;
                             }, 1000)
                         } else if (data.code == '50000') {
 
@@ -568,7 +584,7 @@ $(function () {
                         withCredentials: true,
                     },
                     data: {
-                        "patientId": userInfo.id,
+                        "patientId": patientInfo.id,
                         "patientSource": $(".patientSource").val(),
                     },
                     dataType: 'json',
