@@ -14,7 +14,7 @@ $(function () {
             } else if (data.code == '40004') {
                 myLocal.deleteItem('userInfo')
             } else {
-                myLocal.setItem('userInfo', data.result);
+                myLocal.setItem('userInfo', {});
             }
         },
         error: function (err) {
@@ -35,6 +35,7 @@ $(function () {
             dataType: 'json',
             data: {
                 "id": id,
+                "patientId": myLocal.getItem('userInfo').id,
             },
             success: function (data) {
                 console.log(data)
