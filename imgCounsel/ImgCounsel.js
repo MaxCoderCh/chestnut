@@ -190,6 +190,9 @@ $(function () {
     // 选择患者-end
 
     // 文件 处理 - start
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        $(".fileInput").attr("multiple", "multiple");
+    }
     $(".fileInput").change(function () {
         layer.open({
             title: '',

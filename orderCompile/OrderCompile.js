@@ -305,7 +305,9 @@ $(function () {
             urls: urls, // 需要预览的图片http链接列表
         });
     })
-
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        $(".fileInput").attr("multiple", "multiple");
+    }
     // 文件 处理 - start
     $(".fileInput").change(function () {
         layer.open({
