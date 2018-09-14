@@ -77,7 +77,7 @@ $(function () {
         var form = layui.form;
         form.render();
     });
-    var patientInfo = null;
+    var patientInfo = {};
     var flag = true;// 是否是新建的
     var drugAllergyArr = [];
     var illnessAddArr = [];
@@ -103,6 +103,8 @@ $(function () {
             success: function (data) {
                 console.log(data)
                 if (data.code == '20000') {
+                    // flag 是否第一次建立该患者，false数据库中存在过该患者
+                    flag = false;
                     patientInfo = data.result;
                     myLocal.setItem("patientInfo", data.result);
                     $(".doctorName").html(data.result.patientName);
@@ -201,7 +203,7 @@ $(function () {
     })
     // 获取身份证图片路径 - end
     if (myLocal.getItem('patientInfo')) {
-        flag = false;
+        // 从编辑就诊人来,修改就诊人信息
         getPatientById(myLocal.getItem("patientInfo").id);
     }
 
