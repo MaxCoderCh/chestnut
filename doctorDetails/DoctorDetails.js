@@ -157,14 +157,16 @@ $(function () {
     // 加关注 、 取消关注  -  end
 
     $(".imgBtn").click(function () {
-        $(".imgPicAffirm").html($(".imgBtn").attr("pic"));
-        layer.open({
-            title: '',
-            type: 1,
-            content: $('.inquiryContianer'),
-            closeBtn: false,
-            shadeClose: false,
-        });
+        if ($(".imgBtn").attr("pic")) {
+            $(".imgPicAffirm").html($(".imgBtn").attr("pic"));
+            layer.open({
+                title: '',
+                type: 1,
+                content: $('.inquiryContianer'),
+                closeBtn: false,
+                shadeClose: false,
+            });
+        }
     })
     $('.inquiryContianer').find(".inquiryNoBtn").click(function () {
         layer.closeAll();
