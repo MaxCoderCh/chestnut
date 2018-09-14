@@ -2,6 +2,14 @@ $(function () {
     var pageSize = 10;
     var pageNo = 1;
     var dataFlag = true;
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
+            pageNo = 1;
+            $(".doctorList").html("");
+            findDoctorList(pageNo, pageSize);
+        }
+    });
+    findDoctorList(pageNo, pageSize);
     $(".searchBtn").click(function () {
         pageNo = 1;
         $(".doctorList").html("");

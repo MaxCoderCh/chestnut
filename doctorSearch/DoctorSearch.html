@@ -6,8 +6,7 @@
     <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
     <title>在线问诊</title>
     <!-- 用户是否可以通过他的手势来缩放整个应用程序 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
     <!-- 作者 -->
     <meta name="author" content="">
     <!-- 描述 google：240个字符即120个文字以内 百度：220个字符即110个文字以内 -->
@@ -70,7 +69,7 @@
         <div class="searchBox">
             <div class="searchItem">
                 <img class="searchImg" src="../images/search_false.png" alt="">
-                <input class="searchInput" placeholder="请输入医生名字" type="text">
+                <input class="searchInput" placeholder="请输入医生名字" type="text" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/gi,'')">
             </div>
             <a class="searchBtn" href="javascript:;">搜索</a>
         </div>
