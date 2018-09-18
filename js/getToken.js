@@ -1,4 +1,5 @@
 $(function () {
+    var tempHref = '';
     // 获取token
     function getToken() {
         $('form')[0].submit();
@@ -15,7 +16,11 @@ $(function () {
                 console.log(data)
                 if (data.code == '20000') {
                     myLocal.setItem('token', data.result);
-                    window.location.reload();
+                    if (tempHref) {
+                        window.location = tempHref;
+                    } else {
+                        window.location.reload();
+                    }
                 } else {
                     getToken();
                 }
@@ -40,6 +45,9 @@ $(function () {
             if (data.code == '20000') {
                 myLocal.setItem('userInfo', data.result);
             } else if (data.code == '40001') {
+                if (window.location.pathname == "/chestnut/doctorDetails/DoctorDetails.html") {
+                    tempHref = window.location.href;
+                }
                 getToken();
             } else if (data.code == '40004') {
                 myLocal.deleteItem('userInfo')

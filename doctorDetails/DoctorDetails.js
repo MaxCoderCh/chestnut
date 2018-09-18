@@ -39,7 +39,7 @@ $(function () {
                     $(".focusBtn").removeClass("focusTrue").html("关注");
                 }
             } else {
-
+                layer.msg("信息加载失败")
             }
         },
         error: function (err) {
