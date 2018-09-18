@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <!-- 网站标题 google：66个字符也就是33个文字以内 百度：60个字符也就是30个文字以内 -->
@@ -33,16 +34,16 @@
     <meta name="HandheldFriendly" content="true">
     <script type="text/javascript">
         // console.log(navigator.userAgent)// 设备信息
-        !(function(doc, win) {
+        !(function (doc, win) {
             var docEle = doc.documentElement, //获取html元素
                 event = "onorientationchange" in window ? "orientationchange" : "resize", //判断是屏幕旋转还是resize;
-                fn = function() {
+                fn = function () {
                     var width = docEle.clientWidth;
                     width && (docEle.style.fontSize = (width / 18.75) + "px"); //设置html的fontSize,640设计图32 750设计图18.75
                 }
-                win.addEventListener(event, fn, false);
-                win.addEventListener("DOMContentLoaded", fn, false);
-                win.addEventListener("resize", fn, false);
+            win.addEventListener(event, fn, false);
+            win.addEventListener("DOMContentLoaded", fn, false);
+            win.addEventListener("resize", fn, false);
         })(document, window);
     </script>
     <link rel="stylesheet" href="/chestnut/plugins/layui/css/layui.css">
@@ -55,6 +56,7 @@
     <script src="/chestnut/js/utils.js"></script>
     <script src="/chestnut/newrecord/newrecord.js" charset="utf-8"></script>
 </head>
+
 <body>
     <div class="tabBox">
         <a class="active" href="javascript:;">基本信息</a>
@@ -77,7 +79,7 @@
             </div>
             <div class="basicInfoItem">
                 <p>出生年月</p>
-                <input class="patientBirthday" type="text" placeholder="请您输入出生年月">
+                <input class="patientBirthday" type="text" placeholder="请您输入出生年月" readonly="readonly">
             </div>
             <div class="basicInfoItem">
                 <p>性 别</p>
@@ -88,7 +90,7 @@
             </div>
             <div class="basicInfoItem">
                 <p>年 龄</p>
-                <input class="age" type="number" placeholder="请您输入年龄">
+                <input class="age" type="number" placeholder="请您输入年龄" readonly="readonly">
             </div>
             <div class="basicInfoItem">
                 <p>身 高</p>
@@ -132,7 +134,7 @@
             </div>
             <div class="medicalItem">
                 <div class="searchBox">
-                    <p>手   术   史</p>
+                    <p>手 术 史</p>
                     <div class="inputBox">
                         <input class="illnessSearch surgeryInput" type="text" name="" value="" placeholder="请输入拼音首字母">
                         <ul class="selectUl surgeryAdd">
@@ -159,4 +161,5 @@
     <a class="submitBtn" href="javascript:;">完 成</a>
     <div class="footer">copyright &copy; 北京安智杰科技有限公司</div>
 </body>
+
 </html>

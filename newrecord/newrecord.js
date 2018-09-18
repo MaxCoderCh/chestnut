@@ -57,9 +57,9 @@ $(function () {
         $('.contentBox > div').eq(_index).addClass('active').siblings('div').removeClass('active');
     })
     // 性别切换
-    $('.sexBox > a').click(function () {
-        $(this).addClass('active').siblings('a').removeClass('active');
-    });
+    // $('.sexBox > a').click(function () {
+    //     $(this).addClass('active').siblings('a').removeClass('active');
+    // });
 
 
 
@@ -490,7 +490,7 @@ $(function () {
                                 "patientCard": $('.patientCard').val(),
                                 "patientAge": $('.age').val(),
                             })
-                            history.back(-1);
+                            window.location.href = document.referrer;
                         } else {
 
                         }
@@ -530,7 +530,7 @@ $(function () {
                                 "patientCard": $('.patientCard').val(),
                                 "patientAge": $('.age').val(),
                             })
-                            history.back(-1);
+                            window.location.href = document.referrer;
                         } else {
 
                         }
