@@ -71,7 +71,7 @@ $(function () {
         patientInfo = eval("(" + $(this).attr("name") + ")");
         // 存储患者信息
         myLocal.setItem("patientInfo", patientInfo);
-        window.history.go(-1);
+        window.location = '/chestnut/imgCounsel/ImgCounsel.html';
     })
     // 选择就诊人-end
     // 就诊人编辑事件 - start
