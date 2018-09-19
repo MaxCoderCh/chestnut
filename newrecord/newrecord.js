@@ -492,7 +492,7 @@ $(function () {
                             })
                             window.location.href = document.referrer;
                         } else {
-
+                            layer.msg("修改失败")
                         }
                     },
                     error: function (err) {
@@ -532,7 +532,7 @@ $(function () {
                             })
                             window.location.href = document.referrer;
                         } else {
-
+                            layer.msg("添加失败");
                         }
                     },
                     error: function (err) {
