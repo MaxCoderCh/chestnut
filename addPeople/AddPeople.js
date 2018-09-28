@@ -112,6 +112,9 @@ $(function () {
                     $(".age").html(data.result.patientAge + '岁');
                     $(".idNumber").html(data.result.patientCard);
                     $(".patientSource").val(data.result.patientSource);
+                    if (data.result.patientSource == "自己") {
+                        $(".patientSource").html('<option value="自己">自己</option>');
+                    }
                     layui.use('form', function () {
                         var form = layui.form;
                         form.render();
